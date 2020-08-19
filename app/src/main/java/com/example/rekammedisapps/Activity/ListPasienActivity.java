@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rekammedisapps.Adapter.ListPasienAdapter;
@@ -38,6 +39,9 @@ public class ListPasienActivity extends AppCompatActivity {
 
 //        pb_listpasien = findViewById(R.id.pb_lp_progressBar);
         rv_listpasien = findViewById(R.id.rv_lp_listpasien);
+        rv_listpasien.setLayoutManager(new LinearLayoutManager(this));
+        rv_listpasien.setHasFixedSize(true);
+        rv_listpasien.smoothScrollToPosition(0);
 
         //Button
         iv_btnback = findViewById(R.id.iv_lp_btnback);

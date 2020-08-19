@@ -100,7 +100,6 @@ public class DaftarPasien extends AppCompatActivity implements View.OnClickListe
         }
     }
     private void saveDataPatient(String nama, String alamat, String umur){
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String keyPasien = database.getReference("Data Umum Pasien").push().getKey();
         final ProgressDialog pd = new ProgressDialog(this);
