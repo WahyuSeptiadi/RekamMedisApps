@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rekammedisapps.Activity.LoginActivity">
+
+    <!-- Design logo by -> https://www.flaticon.com/authors/flat-icons -->
+
+    <include
+        android:id="@+id/topbar_login"
+        layout="@layout/topbar_primary" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/titlebar_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Halaman Login"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:gravity="center_horizontal" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topbar_login"
+        tools:ignore="UselessParent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cl_upload_imgprofile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="100dp"
+                app:cardElevation="10dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_logoApps"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/icon_queue"
+                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_width="0.5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_bginput_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cl_upload_imgprofile"
+                android:layout_centerInParent="true"
+                android:layout_margin="30dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp">
+
+                        <EditText
+                            android:id="@+id/et_email_login"
+                            android:layout_width="250dp"
+                            android:layout_height="40dp"
+                            android:autofillHints=""
+                            android:background="@drawable/bg_round_white"
+                            android:hint="Masukkan Email"
+                            android:inputType="textEmailAddress"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="10dp"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="10dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_email"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        app:passwordToggleEnabled="true">
+
+                        <EditText
+                            android:id="@+id/et_password_login"
+                            android:layout_width="250dp"
+                            android:layout_height="40dp"
+                            android:autofillHints=""
+                            android:background="@drawable/bg_round_white"
+                            android:hint="Masukkan Password"
+                            android:inputType="textPassword"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="10dp"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="10dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_btnlogin"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@id/input_password"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        app:cardCornerRadius="13dp"
+                        app:cardElevation="10dp">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/tv_login"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="Masuk"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="18sp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cv_btnlogin"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="30dp">
+
+                        <TextView
+                            android:id="@+id/tv_donthave_account"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Belum punya akun ?"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_registryfirst"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/tv_donthave_account"
+                            android:text="Daftar"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/tv_donthave_account" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

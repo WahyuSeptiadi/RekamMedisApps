@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DaftarPasien">
+
+    <include
+        android:id="@+id/topbar_registry"
+        layout="@layout/topbar_primary" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btnback_registry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_back_white"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/titlebar_registry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Patient Registration"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:gravity="center_horizontal" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topbar_registry"
+        tools:ignore="UselessParent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_upload_imgprofile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_dp_imagepasien"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/icon_cam_upload"
+                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_width="0.5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_dp_imageuploadprofilepasien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_round_primary"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_img_upload_white"
+                    app:layout_constraintBottom_toBottomOf="@+id/civ_dp_imagepasien"
+                    app:layout_constraintEnd_toEndOf="@+id/civ_dp_imagepasien"
+                    app:layout_constraintHorizontal_bias="0.85"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/civ_dp_imagepasien"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <ImageView
+                    android:id="@+id/iv_dp_imageDeleteProfilepasien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_round_primary"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_img_delete_white"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/civ_dp_imagepasien"
+                    app:layout_constraintEnd_toEndOf="@+id/civ_dp_imagepasien"
+                    app:layout_constraintHorizontal_bias="0.85"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/civ_dp_imagepasien"
+                    app:layout_constraintVertical_bias="1.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_bginput_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cl_upload_imgprofile"
+                android:layout_centerInParent="true"
+                android:layout_margin="30dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp">
+
+                        <EditText
+                            android:id="@+id/et_dp_namapasien"
+                            android:layout_width="250dp"
+                            android:layout_height="40dp"
+                            android:autofillHints=""
+                            android:background="@drawable/bg_round_white"
+                            android:hint="Masukkan Nama Pasien"
+                            android:inputType="textCapWords"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="10dp"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="10dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_username"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp">
+
+                        <EditText
+                            android:id="@+id/et_dp_alamat"
+                            android:layout_width="250dp"
+                            android:layout_height="40dp"
+                            android:autofillHints=""
+                            android:background="@drawable/bg_round_white"
+                            android:hint="Masukkan Alamat"
+                            android:inputType="text"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="10dp"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="10dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_email"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_dp_umur"
+                            android:layout_width="250dp"
+                            android:layout_height="40dp"
+                            android:autofillHints=""
+                            android:background="@drawable/bg_round_white"
+                            android:hint="Masukkan Umur"
+                            android:inputType="number"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="10dp"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="10dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_dp_btnregister"
+                        android:layout_width="100dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@id/input_password"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="30dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        app:cardCornerRadius="13dp"
+                        app:cardElevation="10dp">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_registry"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/tv_registry"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="Daftar"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="18sp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/pb_dp_progressBar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true" />-->
+</RelativeLayout>

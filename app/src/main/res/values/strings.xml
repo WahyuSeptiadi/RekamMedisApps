@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">RekamMedisApps</string>
+    <string name="todo">todo</string>
+    <string name="titlebar_registry">Daftar Akun</string>
+    <string name="titlebar_login">Login</string>
+    <string name="hint_username">masukkan username</string>
+    <string name="hint_email">masukkan email</string>
+    <string name="hint_password">masukkan password</string>
+    <string name="logout_menu">Keluar</string>
+    <string name="help_menu">Bantuan</string>
+    <string name="titlebar_myprofile">Profile Saya</string>
+    <string name="titlebar_help">Bantuan</string>
+    <string name="titilebar_adddoctor">Tambah Dokter</string>
+    <string name="str_dot">....</string>
+    <string name="hint_namedr">masukkan nama dokter</string>
+    <string name="hint_spesialis">masukkan spesialis</string>
+    <string name="hint_workday">masukkan hari kerja</string>
+    <string name="hint_start">mulai</string>
+    <string name="hint_finish">selesai</string>
+    <string name="note_limit">NOTE : Batas -\npasien tiap hari</string>
+    <string name="str_add">Tambah</string>
+    <string name="str_timesetting">Atur waktu kerja</string>
+    <string name="str_emptydr">Belum ada dokter yang ditambahkan</string>
+    <string name="titlebar_updatedoctor">Update Data Dokter</string>
+    <string name="str_update">Update</string>
+    <string name="str_null">Silahkan muat ulang</string>
+    <string name="str_emptyPatient">Belum ada pasien terdaftar</string>
+    <string name="titlebar_patient">Daftar Pasien</string>
+</resources>

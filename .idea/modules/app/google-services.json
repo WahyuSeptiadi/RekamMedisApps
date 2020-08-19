@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "652995016989",
+    "firebase_url": "https://rekammedis-eab85.firebaseio.com",
+    "project_id": "rekammedis-eab85",
+    "storage_bucket": "rekammedis-eab85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652995016989:android:7bbaa9fc9e6aa7b04a49f4",
+        "android_client_info": {
+          "package_name": "com.example.rekammedisapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652995016989-fe23u90nj99u4noi6okfhntklt3mocdo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rekammedisapps",
+            "certificate_hash": "3cbf45cdd9fe2b6ff10ec66dec9a450a4655ff8b"
+          }
+        },
+        {
+          "client_id": "652995016989-rcqhp5ea0g43direo7r9cn54bln1hp7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4QwLWZv7twsx2v5voOOr9A287cZGDGW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652995016989-rcqhp5ea0g43direo7r9cn54bln1hp7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
