@@ -10,12 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.rekammedisapps.Model.PasienModel;
 import com.example.rekammedisapps.Model.UserModel;
 import com.example.rekammedisapps.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class FormRekamMedisActivity extends AppCompatActivity {
 
@@ -33,6 +32,7 @@ public class FormRekamMedisActivity extends AppCompatActivity {
     //Database
     private DatabaseReference reference, referenceDataPerawat;
     private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
 
     //Model
     private UserModel userModel;
@@ -51,11 +51,13 @@ public class FormRekamMedisActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_rekam_medis);
+
+        mAuth = FirebaseAuth.getInstance();
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+
         getValueInten();
         getMonthAndroid();
         getDataPerawat();
-
-        mAuth = FirebaseAuth.getInstance();
 
         et_namaPasien = findViewById(R.id.et_frm_nama);
         et_umurPasien = findViewById(R.id.et_frm_umur);
@@ -73,24 +75,27 @@ public class FormRekamMedisActivity extends AppCompatActivity {
                 sendToDatabase();
                 Intent toDetailRekamMedis = new Intent(FormRekamMedisActivity.this, DetailRekamMedisActivity.class);
                 toDetailRekamMedis.putExtra("idPasien", idPasien);
+                toDetailRekamMedis.putExtra("namaPasien", namaPasien);
+                toDetailRekamMedis.putExtra("umurPasien", umurPasien);
+                toDetailRekamMedis.putExtra("alamatPasien", alamatPasien);
                 startActivity(toDetailRekamMedis);
             }
         });
+
+        et_namaPasien.setText(namaPasien);
+        et_umurPasien.setText(umurPasien);
+        et_alamatPasien.setText(alamatPasien);
 
     }
 
     private void getValueInten() {
         Intent getValue = getIntent();
-        if (getValue != null) {
-            idPasien = getValue.getStringExtra("idPasien");
-            namaPasien = getValue.getStringExtra("namaPasien");
-            umurPasien = getValue.getStringExtra("umurPasien");
-            alamatPasien = getValue.getStringExtra("alamatPasien");
 
-            et_namaPasien.setText(namaPasien);
-            et_umurPasien.setText(umurPasien);
-            et_alamatPasien.setText(alamatPasien);
-        }
+        idPasien = getValue.getStringExtra("idPasien");
+        namaPasien = getValue.getStringExtra("namaPasien");
+        umurPasien = getValue.getStringExtra("umurPasien");
+        alamatPasien = getValue.getStringExtra("alamatPasien");
+
     }
 
     private void getMonthAndroid() {
@@ -113,7 +118,7 @@ public class FormRekamMedisActivity extends AppCompatActivity {
     }
 
     private void getDataPerawat() {
-        idPerawat = mAuth.getCurrentUser().getUid();
+        idPerawat = mUser.getUid();
         referenceDataPerawat = FirebaseDatabase.getInstance().getReference("Users");
         referenceDataPerawat.addValueEventListener(new ValueEventListener() {
             @Override
@@ -122,7 +127,7 @@ public class FormRekamMedisActivity extends AppCompatActivity {
                     Toast.makeText(FormRekamMedisActivity.this, "Data Kosong", Toast.LENGTH_SHORT).show();
                 } else {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        if (dataSnapshot.getKey() == idPerawat) {
+                        if (dataSnapshot.getKey().equals(idPerawat)) {
                             userModel = dataSnapshot.getValue(UserModel.class);
                         }
                     }
@@ -138,6 +143,7 @@ public class FormRekamMedisActivity extends AppCompatActivity {
 
     private void sendToDatabase() {
         reference = FirebaseDatabase.getInstance().getReference("Data RekamMedis Pasien");
+        String key = reference.push().getKey();
 
         String nama_pasien = et_namaPasien.getText().toString();
         String umur_pasien = et_umurPasien.getText().toString();
@@ -153,9 +159,12 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         dataRekamMedis.put("keluhanPasien", keluhan_pasien);
         dataRekamMedis.put("alamatPasien", alamat_pasien);
         dataRekamMedis.put("umurPasien", umur_pasien);
+        dataRekamMedis.put("tanggalPelayanan", String.valueOf(tanggal));
+        dataRekamMedis.put("bulanPelayanan", bulan);
+        dataRekamMedis.put("tahunPelayanan", String.valueOf(tahun));
+        dataRekamMedis.put("idRekamMedis", key);
 
-        reference.child(idPasien).child(bulan + String.valueOf(tahun)).setValue(dataRekamMedis);
 
-
+        reference.child(idPasien).child(key).setValue(dataRekamMedis);
     }
 }

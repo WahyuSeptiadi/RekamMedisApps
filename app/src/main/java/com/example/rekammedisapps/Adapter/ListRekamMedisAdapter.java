@@ -22,7 +22,7 @@ public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAd
     private Activity mActivity;
     private ArrayList<RekamMedisModel> rekamMedisModelArrayList;
 
-    public void ListRekamMedisAdapter(Activity mActivity, ArrayList<RekamMedisModel> rekamMedisModelArrayList){
+    public ListRekamMedisAdapter(Activity mActivity, ArrayList<RekamMedisModel> rekamMedisModelArrayList){
         this.mActivity = mActivity;
         this.rekamMedisModelArrayList = rekamMedisModelArrayList;
     }
@@ -44,6 +44,9 @@ public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAd
         }
         holder.tv_namaPerawat.setText(rekamMedisModel.getNamaPerawat());
         holder.tv_keluhan.setText(rekamMedisModel.getKeluhanPasien());
+        holder.bulan.setText(rekamMedisModel.getBulanPelayanan());
+        holder.tanggal.setText(rekamMedisModel.getTanggalPelayanan());
+        holder.tahun.setText(rekamMedisModel.getTahunPelayanan());
     }
 
     @Override
@@ -51,15 +54,20 @@ public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAd
         return rekamMedisModelArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView civImagePerawat;
         private TextView tv_namaPerawat, tv_keluhan;
+        private TextView tanggal, bulan, tahun;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             civImagePerawat = itemView.findViewById(R.id.civ_lrkm_fotodokter);
             tv_namaPerawat = itemView.findViewById(R.id.tv_lrkm_namadokter);
             tv_keluhan = itemView.findViewById(R.id.tv_lrkm_keluhan);
+
+            tanggal = itemView.findViewById(R.id.tv_lrkm_tanggal);
+            bulan = itemView.findViewById(R.id.tv_lrkm_bulan);
+            tahun = itemView.findViewById(R.id.tv_lrkm_tahun);
         }
     }
 }

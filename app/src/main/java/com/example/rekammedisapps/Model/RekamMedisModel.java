@@ -3,25 +3,20 @@ package com.example.rekammedisapps.Model;
 public class RekamMedisModel {
     private String idPasien;
     private String idPerawat;
-    private String tanggalsekarang;
+    private String tanggalPelayanan;
+    private String bulanPelayanan;
+    private String tahunPelayanan;
     private String namaPasien;
     private String namaPerawat;
     private String alamatPasien;
+    private String umurPasien;
     private String keluhanPasien;
     private String imageURLPerawat;
+    private String idRekamMedis;
 
     public RekamMedisModel(){
     }
 
-    public RekamMedisModel(String idPasien, String idPerawat, String tanggalsekarang, String namaPasien, String namaPerawat, String alamatPasien, String keluhanPasien){
-        this.idPasien = idPasien;
-        this.idPerawat = idPerawat;
-        this.tanggalsekarang = tanggalsekarang;
-        this.namaPasien = namaPasien;
-        this.namaPerawat = namaPerawat;
-        this.alamatPasien = alamatPasien;
-        this.keluhanPasien = keluhanPasien;
-    }
 
     public String getIdPasien() {
         return idPasien;
@@ -47,13 +42,6 @@ public class RekamMedisModel {
         this.idPerawat = idPerawat;
     }
 
-    public String getTanggalsekarang() {
-        return tanggalsekarang;
-    }
-
-    public void setTanggalsekarang(String tanggalsekarang) {
-        this.tanggalsekarang = tanggalsekarang;
-    }
 
     public String getNamaPasien() {
         return namaPasien;
@@ -85,5 +73,45 @@ public class RekamMedisModel {
 
     public void setImageURLPerawat(String imageURLPerawat) {
         this.imageURLPerawat = imageURLPerawat;
+    }
+
+    public String getTahunPelayanan() {
+        return tahunPelayanan;
+    }
+
+    public void setTahunPelayanan(String tahunPelayanan) {
+        this.tahunPelayanan = tahunPelayanan;
+    }
+
+    public String getBulanPelayanan() {
+        return bulanPelayanan;
+    }
+
+    public void setBulanPelayanan(String bulanPelayanan) {
+        this.bulanPelayanan = bulanPelayanan;
+    }
+
+    public String getTanggalPelayanan() {
+        return tanggalPelayanan;
+    }
+
+    public void setTanggalPelayanan(String tanggalPelayanan) {
+        this.tanggalPelayanan = tanggalPelayanan;
+    }
+
+    public String getUmurPasien() {
+        return umurPasien;
+    }
+
+    public void setUmurPasien(String umurPasien) {
+        this.umurPasien = umurPasien;
+    }
+
+    public String getIdRekamMedis() {
+        return idRekamMedis;
+    }
+
+    public void setIdRekamMedis(String idRekamMedis) {
+        this.idRekamMedis = idRekamMedis;
     }
 }

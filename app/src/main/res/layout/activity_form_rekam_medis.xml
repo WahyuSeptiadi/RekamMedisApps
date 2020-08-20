@@ -158,7 +158,7 @@
                     android:autofillHints=""
                     android:background="@drawable/bg_round_white"
                     android:hint="Keluhan Pasien"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>
@@ -188,7 +188,7 @@
                     android:autofillHints=""
                     android:background="@drawable/bg_round_white"
                     android:hint="Riwayat Pasien"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>
@@ -218,7 +218,7 @@
                     android:autofillHints=""
                     android:background="@drawable/bg_round_white"
                     android:hint="Diagnosa Pasien"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>
@@ -248,7 +248,7 @@
                     android:autofillHints=""
                     android:background="@drawable/bg_round_white"
                     android:hint="Rencana Penatalaksanaan"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>
@@ -278,7 +278,7 @@
                     android:autofillHints=""
                     android:background="@drawable/bg_round_white"
                     android:hint="Pengobatan dan / atau Tindakan"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>

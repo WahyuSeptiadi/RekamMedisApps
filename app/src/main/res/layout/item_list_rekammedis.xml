@@ -2,9 +2,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    >
 
+    <LinearLayout
+        android:id="@+id/tanggalbulan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:paddingEnd="4dp"
+            android:id="@+id/tv_lrkm_tanggal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:paddingEnd="4dp"
+            android:id="@+id/tv_lrkm_bulan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Juni"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tv_lrkm_tahun"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:text="2020"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
     <RelativeLayout
+        android:layout_below="@id/tanggalbulan"
         android:id="@+id/rv_image_nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -32,7 +69,6 @@
             android:textStyle="bold" />
     </RelativeLayout>
     <RelativeLayout
-        android:padding="10dp"
         android:id="@+id/rv_keluhan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
