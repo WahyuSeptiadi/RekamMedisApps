@@ -147,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 hashMap.put("username", username);
                                 hashMap.put("search", username.toLowerCase());
                                 hashMap.put("imageURL", "default");
-                                hashMap.put("type", "user");
+//                                hashMap.put("type", "user");
 
                                 reference.setValue(hashMap).addOnCompleteListener(task1 -> {
                                     if (mImageUri != null) {

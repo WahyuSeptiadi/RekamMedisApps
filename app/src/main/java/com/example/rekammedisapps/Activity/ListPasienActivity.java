@@ -24,11 +24,13 @@ import java.util.ArrayList;
 public class ListPasienActivity extends AppCompatActivity {
 
     //Database
-    DatabaseReference reference;
+    private DatabaseReference reference;
+
     //    private ProgressBar pb_listpasien;
     private RecyclerView rv_listpasien;
     private ImageView iv_btnback;
     private ArrayList<PasienModel> pasienModelArrayList;
+
     //Class
     private ListPasienAdapter listPasienAdapter;
 

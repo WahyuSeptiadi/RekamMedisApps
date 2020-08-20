@@ -1,14 +1,17 @@
 package com.example.rekammedisapps.Adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rekammedisapps.Activity.ListMonthCalendarActivity;
 import com.example.rekammedisapps.Model.PasienModel;
 import com.example.rekammedisapps.R;
 import com.squareup.picasso.Picasso;
@@ -45,6 +48,18 @@ public class ListPasienAdapter extends RecyclerView.Adapter<ListPasienAdapter.Vi
         }
 
         holder.tvNamePatient.setText(pasienModel.getNama());
+
+        holder.cv_listpasien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toListMonth = new Intent(mActivty, ListMonthCalendarActivity.class);
+                toListMonth.putExtra("idPasien", pasienModel.getIdPasien());
+                toListMonth.putExtra("namaPasien", pasienModel.getNama());
+                toListMonth.putExtra("umurPasien", pasienModel.getUmur());
+                toListMonth.putExtra("alamatPasien", pasienModel.getAlamat());
+                mActivty.startActivity(toListMonth);
+            }
+        });
     }
 
     @Override
@@ -54,12 +69,14 @@ public class ListPasienAdapter extends RecyclerView.Adapter<ListPasienAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        private CardView cv_listpasien;
         private CircleImageView civProfilePatient;
         private TextView tvNamePatient;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            cv_listpasien = itemView.findViewById(R.id.cv_listpasien);
             civProfilePatient = itemView.findViewById(R.id.civ_lp_fotopasien);
             tvNamePatient = itemView.findViewById(R.id.tv_lp_namapasien);
 //            tvEstimationFinish = itemView.findViewById(R.id.tv_estimationfinish_patientlist);

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activity.FormRekamMedisActivity">
 
     <include
@@ -281,6 +282,33 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_frm_btnaddrekammedis"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_below="@id/rv_pengobatan"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="13dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/rl_registry"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_registry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="RekamMedis"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="13sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
     </ScrollView>

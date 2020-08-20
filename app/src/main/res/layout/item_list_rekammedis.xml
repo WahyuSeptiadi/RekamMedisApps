@@ -50,7 +50,7 @@
 
         <TextView
             android:textSize="@dimen/textsizevalue"
-            android:id="@+id/et_lrkm_keluhan"
+            android:id="@+id/tv_lrkm_keluhan"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:textColor="@color/colorBlack"
@@ -59,119 +59,119 @@
             android:autofillHints="" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:padding="10dp"
-        android:id="@+id/rv_riwayat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rv_keluhan"
-        android:layout_marginTop="10dp">
+<!--    <RelativeLayout-->
+<!--        android:padding="10dp"-->
+<!--        android:id="@+id/rv_riwayat"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/rv_keluhan"-->
+<!--        android:layout_marginTop="10dp">-->
 
-        <TextView
-            android:id="@+id/tv_riwayat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Riwayat Penyakit"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/sizesubTitle"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_riwayat"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Riwayat Penyakit"-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--            android:textSize="@dimen/sizesubTitle"-->
+<!--            android:textStyle="bold" />-->
 
-        <TextView
-            android:id="@+id/et_lrkm_riwayat"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="@dimen/textsizevalue"
-            android:layout_below="@id/tv_riwayat"
-            android:layout_marginTop="5dp"
-            android:autofillHints=""
-            android:textColor="@color/colorBlack"
-             />
-    </RelativeLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/et_lrkm_riwayat"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:textSize="@dimen/textsizevalue"-->
+<!--            android:layout_below="@id/tv_riwayat"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:autofillHints=""-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--             />-->
+<!--    </RelativeLayout>-->
 
-    <RelativeLayout
-        android:padding="10dp"
-        android:id="@+id/rv_diagnosa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rv_riwayat"
-        android:layout_marginTop="10dp">
+<!--    <RelativeLayout-->
+<!--        android:padding="10dp"-->
+<!--        android:id="@+id/rv_diagnosa"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/rv_riwayat"-->
+<!--        android:layout_marginTop="10dp">-->
 
-        <TextView
-            android:id="@+id/tv_diagnosa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Diagnosa Penyakit"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/sizesubTitle"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_diagnosa"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Diagnosa Penyakit"-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--            android:textSize="@dimen/sizesubTitle"-->
+<!--            android:textStyle="bold" />-->
 
-        <TextView
-            android:id="@+id/et_lrkm_diagnosa"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="@dimen/textsizevalue"
-            android:textColor="@color/colorBlack"
-            android:layout_below="@id/tv_diagnosa"
-            android:layout_marginTop="5dp"
-            android:autofillHints=""
-            />
-    </RelativeLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/et_lrkm_diagnosa"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:textSize="@dimen/textsizevalue"-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--            android:layout_below="@id/tv_diagnosa"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:autofillHints=""-->
+<!--            />-->
+<!--    </RelativeLayout>-->
 
-    <RelativeLayout
-        android:padding="10dp"
-        android:id="@+id/rv_rencanapenatalaksanaan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rv_diagnosa"
-        android:layout_marginTop="10dp">
+<!--    <RelativeLayout-->
+<!--        android:padding="10dp"-->
+<!--        android:id="@+id/rv_rencanapenatalaksanaan"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/rv_diagnosa"-->
+<!--        android:layout_marginTop="10dp">-->
 
-        <TextView
-            android:id="@+id/tv_rencanapenatalksanaan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rencana Penatalaksanaan"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/sizesubTitle"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_rencanapenatalksanaan"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Rencana Penatalaksanaan"-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--            android:textSize="@dimen/sizesubTitle"-->
+<!--            android:textStyle="bold" />-->
 
-        <TextView
-            android:id="@+id/et_lrkm_rencanapenatalaksanaan"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="@dimen/textsizevalue"
-            android:textColor="@color/colorBlack"
-            android:layout_below="@id/tv_rencanapenatalksanaan"
-            android:layout_marginTop="5dp"
-            android:autofillHints=""
-            />
-    </RelativeLayout>
-    <RelativeLayout
-        android:padding="10dp"
-        android:id="@+id/rv_pengobatan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rv_rencanapenatalaksanaan"
-        android:layout_marginTop="10dp">
+<!--        <TextView-->
+<!--            android:id="@+id/et_lrkm_rencanapenatalaksanaan"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:textSize="@dimen/textsizevalue"-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--            android:layout_below="@id/tv_rencanapenatalksanaan"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:autofillHints=""-->
+<!--            />-->
+<!--    </RelativeLayout>-->
+<!--    <RelativeLayout-->
+<!--        android:padding="10dp"-->
+<!--        android:id="@+id/rv_pengobatan"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/rv_rencanapenatalaksanaan"-->
+<!--        android:layout_marginTop="10dp">-->
 
-        <TextView
-            android:id="@+id/tv_pengobatan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pengobatan atau Tindakan"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/sizesubTitle"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_pengobatan"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Pengobatan atau Tindakan"-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--            android:textSize="@dimen/sizesubTitle"-->
+<!--            android:textStyle="bold" />-->
 
-        <EditText
-            android:textSize="@dimen/textsizevalue"
-            android:textColor="@color/colorBlack"
-            android:id="@+id/et_lrkm_pengobatan"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/tv_pengobatan"
-            android:layout_marginTop="5dp"
-            android:autofillHints=""
-            />
-    </RelativeLayout>
+<!--        <EditText-->
+<!--            android:textSize="@dimen/textsizevalue"-->
+<!--            android:textColor="@color/colorBlack"-->
+<!--            android:id="@+id/et_lrkm_pengobatan"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_below="@id/tv_pengobatan"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:autofillHints=""-->
+<!--            />-->
+<!--    </RelativeLayout>-->
 
 </RelativeLayout>

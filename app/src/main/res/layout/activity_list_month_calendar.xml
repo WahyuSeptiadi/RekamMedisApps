@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.DetailRekamMedisActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activity.ListMonthCalendarActivity">
 
     <include
-        android:id="@+id/topbar_hasilrekammedis"
+        android:id="@+id/topbar_lp_listpasien"
         layout="@layout/topbar_primary" />
 
     <RelativeLayout
-        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/btnback_detailrekammedis"
+            android:id="@+id/iv_lmc_btnback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
-            android:contentDescription="Halaman Awal"
+            android:contentDescription="Halaman Rekam Medis"
             android:src="@drawable/ic_back_white"
             android:layout_marginLeft="10dp" />
 
         <TextView
-            android:id="@+id/titlebar_profile"
+            android:id="@+id/tv_lmc_titlebar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Hasil Rekam Medis"
+            android:text="List Waktu Rawat Jalan"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#fff"
             android:textSize="18sp"
             android:gravity="center_horizontal" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_detailrekammedis"
-        android:layout_below="@id/topbar_hasilrekammedis"
+        android:id="@+id/rv_lmc_listwakturekam"
+        android:layout_below="@+id/topbar_lp_listpasien"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_list_rekammedis"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_list_month_calendar"
         />
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_drm_tambahrekammedis"
+        android:id="@+id/btn_lmc_tambahrekammedis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -59,7 +59,5 @@
         android:backgroundTint="@color/colorPrimary"
         android:layout_marginTop="300dp"
         app:fabSize="normal"/>
-
-
 
 </RelativeLayout>

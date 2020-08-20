@@ -80,7 +80,6 @@ public class DaftarPasien extends AppCompatActivity implements View.OnClickListe
                 String namapasien = et_namapasien.getText().toString();
                 String alamatpasien = et_alamatpasien.getText().toString();
                 String umurpasien = et_umurpasien.getText().toString();
-
                 saveDataPatient(namapasien, alamatpasien, umurpasien);
                 break;
             case R.id.iv_dp_imageuploadprofilepasien:
