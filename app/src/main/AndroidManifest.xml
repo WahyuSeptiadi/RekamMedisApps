@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.FormRekamMedisActivity" />
-        <activity android:name=".Activity.DetailRekamMedisActivity" />
+        <activity android:name=".Activity.ListRekamMedisActivity" />
         <activity android:name=".Activity.ListPasienActivity" />
         <activity android:name=".Activity.LoginActivity">
             <intent-filter>
@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.DaftarPasien" />
+        <activity android:name=".Activity.DaftarPasienActivity" />
         <activity android:name=".Activity.HomeActivity" />
         <activity android:name=".Activity.RegisterActivity" />
         <activity

@@ -2,7 +2,9 @@ package com.example.rekammedisapps.Activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +28,7 @@ public class ListPasienActivity extends AppCompatActivity {
     //Database
     private DatabaseReference reference;
 
-    //    private ProgressBar pb_listpasien;
+    private ProgressBar pb_listpasien;
     private RecyclerView rv_listpasien;
     private ImageView iv_btnback;
     private ArrayList<PasienModel> pasienModelArrayList;
@@ -39,7 +41,7 @@ public class ListPasienActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_pasien);
 
-//        pb_listpasien = findViewById(R.id.pb_lp_progressBar);
+        pb_listpasien = findViewById(R.id.progressBar_listPasien);
         rv_listpasien = findViewById(R.id.rv_lp_listpasien);
         rv_listpasien.setLayoutManager(new LinearLayoutManager(this));
         rv_listpasien.setHasFixedSize(true);
@@ -55,23 +57,7 @@ public class ListPasienActivity extends AppCompatActivity {
     }
 
     private void getAllPasien() {
-//        DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Pasien");
-//        ArrayList<String> idPasien = new ArrayList<>();
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                idPasien.add(snapshot.getKey());
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
         pasienModelArrayList = new ArrayList<>();
-//        Log.d("ListPasienActivity", "getAllPasien: " + idPasien.get(0));
-//        for (int i = 0; i < idPasien.size(); i++) {
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -89,7 +75,7 @@ public class ListPasienActivity extends AppCompatActivity {
                     rv_listpasien.setAdapter(listPasienAdapter);
                     listPasienAdapter.notifyDataSetChanged();
                 }
-//                    pb_listpasien.setVisibility(View.GONE);
+                pb_listpasien.setVisibility(View.GONE);
             }
 
             @Override
@@ -97,7 +83,5 @@ public class ListPasienActivity extends AppCompatActivity {
 
             }
         });
-//        }
-
     }
 }
