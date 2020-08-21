@@ -27,14 +27,25 @@
 
         <TextView
             android:id="@+id/titlebar_profile"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:text="Home"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="18sp"
             android:gravity="center_horizontal" />
+
+        <ImageView
+            android:id="@+id/iv_logout_home"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/logout"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="15dp"
+            />
     </RelativeLayout>
 
     <RelativeLayout
@@ -161,7 +172,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cv_logout_home"
+            android:id="@+id/cv_listperawat_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -178,7 +189,7 @@
                 android:layout_margin="30dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/civ_iconLogout_home"
+                    android:id="@+id/civ_listperawat_home"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/icon_ticket"
@@ -188,10 +199,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/civ_iconLogout_home"
+                    android:layout_below="@+id/civ_listperawat_home"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="Rekam Medis"
+                    android:text="List Perawat"
                     android:textColor="@color/colorBlack" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
