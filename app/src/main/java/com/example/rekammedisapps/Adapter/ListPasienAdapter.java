@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rekammedisapps.Activity.DetailRekamMedisActivity;
+import com.example.rekammedisapps.Activity.ListRekamMedisActivity;
 import com.example.rekammedisapps.Model.PasienModel;
 import com.example.rekammedisapps.R;
 import com.squareup.picasso.Picasso;
@@ -50,7 +50,7 @@ public class ListPasienAdapter extends RecyclerView.Adapter<ListPasienAdapter.Vi
         holder.tvNamePatient.setText(pasienModel.getNama());
 
         holder.cv_listpasien.setOnClickListener(view -> {
-            Intent toListMonth = new Intent(mActivty, DetailRekamMedisActivity.class);
+            Intent toListMonth = new Intent(mActivty, ListRekamMedisActivity.class);
             toListMonth.putExtra("idPasien", pasienModel.getIdPasien());
             toListMonth.putExtra("namaPasien", pasienModel.getNama());
             toListMonth.putExtra("umurPasien", pasienModel.getUmur());

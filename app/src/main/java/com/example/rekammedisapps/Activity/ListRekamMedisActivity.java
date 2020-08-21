@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,9 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
+import java.util.Calendar;
 
-public class DetailRekamMedisActivity extends AppCompatActivity implements View.OnClickListener {
+public class ListRekamMedisActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView iv_btnBack;
     private FloatingActionButton btnAdd;
@@ -35,6 +38,9 @@ public class DetailRekamMedisActivity extends AppCompatActivity implements View.
     private String idPasien, namaPasien, umurPasien, alamatPasien;
     //Database
     private DatabaseReference reference;
+    private Calendar calendar;
+    private int tahun, bulanInt, tanggal;
+    private String bulan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +54,8 @@ public class DetailRekamMedisActivity extends AppCompatActivity implements View.
         recyclerView.setHasFixedSize(true);
         recyclerView.smoothScrollToPosition(0);
 
-
         reference = FirebaseDatabase.getInstance().getReference("Data RekamMedis Pasien");
+        calendar = Calendar.getInstance();
 
         iv_btnBack = findViewById(R.id.btnback_detailrekammedis);
         btnAdd = findViewById(R.id.add_drm_tambahrekammedis);
@@ -78,17 +84,19 @@ public class DetailRekamMedisActivity extends AppCompatActivity implements View.
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 rekamMedisModelArrayList.clear();
-//                RekamMedisModel rekamMedisModel = snapshot.getValue(RekamMedisModel.class);
-                if (!snapshot.exists()){
-//                    assert rekamMedisModel != null;
-//                    if ()
-                }else {
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                if (!snapshot.exists()) {
+                    Toast.makeText(ListRekamMedisActivity.this, "Maaf, rekam medis masih kosong kosong", Toast.LENGTH_SHORT).show();
+                } else {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         RekamMedisModel rekamMedisModel = dataSnapshot.getValue(RekamMedisModel.class);
-                        rekamMedisModelArrayList.add(rekamMedisModel);
+                        assert rekamMedisModel != null;
+//                        if (rekamMedisModel.getBulanPelayanan().equals(getCurrentMonth()) &&
+//                                rekamMedisModel.getTahunPelayanan().equals(String.valueOf(getCurrentYear()))) {
+                            rekamMedisModelArrayList.add(rekamMedisModel);
+//                        }
                     }
 
-                    listRekamMedisAdapter = new ListRekamMedisAdapter(DetailRekamMedisActivity.this, rekamMedisModelArrayList);
+                    listRekamMedisAdapter = new ListRekamMedisAdapter(ListRekamMedisActivity.this, rekamMedisModelArrayList);
                     recyclerView.setAdapter(listRekamMedisAdapter);
                     listRekamMedisAdapter.notifyDataSetChanged();
                 }
@@ -102,15 +110,41 @@ public class DetailRekamMedisActivity extends AppCompatActivity implements View.
         });
     }
 
+    private int getCurrentDate() {
+        tanggal = calendar.get(Calendar.DAY_OF_MONTH);
+        return tanggal;
+    }
+
+    private String getCurrentMonth() {
+        bulanInt = calendar.get(Calendar.MONTH);
+        bulan = getMonthForInt(bulanInt);
+        return bulan;
+    }
+
+    private int getCurrentYear() {
+        tahun = calendar.get(Calendar.YEAR);
+        return tahun;
+    }
+
+    private String getMonthForInt(int num) {
+        String month = "wrong";
+        DateFormatSymbols dfs = new DateFormatSymbols();
+        String[] months = dfs.getMonths();
+        if (num >= 0 && num <= 11) {
+            month = months[num];
+        }
+        return month;
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnback_detailrekammedis:
-                Intent backToList = new Intent(DetailRekamMedisActivity.this, ListPasienActivity.class);
+                Intent backToList = new Intent(ListRekamMedisActivity.this, ListPasienActivity.class);
                 startActivity(backToList);
                 break;
             case R.id.add_drm_tambahrekammedis:
-                Intent toForm = new Intent(DetailRekamMedisActivity.this, FormRekamMedisActivity.class);
+                Intent toForm = new Intent(ListRekamMedisActivity.this, FormRekamMedisActivity.class);
                 toForm.putExtra("idPasien", idPasien);
                 toForm.putExtra("namaPasien", namaPasien);
                 toForm.putExtra("umurPasien", umurPasien);
@@ -123,7 +157,7 @@ public class DetailRekamMedisActivity extends AppCompatActivity implements View.
         }
     }
 
-    private void getValueIntent(){
+    private void getValueIntent() {
         Intent getValueFromList = getIntent();
 
         idPasien = getValueFromList.getStringExtra("idPasien");

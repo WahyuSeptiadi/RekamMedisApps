@@ -2,9 +2,7 @@ package com.example.rekammedisapps.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -32,7 +30,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.cv_daftarpasien_home:
-                startActivity(new Intent(this, DaftarPasien.class));
+                startActivity(new Intent(this, DaftarPasienActivity.class));
                 break;
             case R.id.cv_rekammedis_home:
                 startActivity(new Intent(this, ListPasienActivity.class));

@@ -1,5 +1,6 @@
 package com.example.rekammedisapps.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,9 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class FormRekamMedisActivity extends AppCompatActivity {
 
@@ -54,6 +55,7 @@ public class FormRekamMedisActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
+        calendar = Calendar.getInstance();
 
         getValueInten();
         getMonthAndroid();
@@ -69,17 +71,14 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         et_pengobatan = findViewById(R.id.et_frm_pengobatan);
 
         btnAddRekamMedis = findViewById(R.id.cv_frm_btnaddrekammedis);
-        btnAddRekamMedis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendToDatabase();
-                Intent toDetailRekamMedis = new Intent(FormRekamMedisActivity.this, DetailRekamMedisActivity.class);
-                toDetailRekamMedis.putExtra("idPasien", idPasien);
-                toDetailRekamMedis.putExtra("namaPasien", namaPasien);
-                toDetailRekamMedis.putExtra("umurPasien", umurPasien);
-                toDetailRekamMedis.putExtra("alamatPasien", alamatPasien);
-                startActivity(toDetailRekamMedis);
-            }
+        btnAddRekamMedis.setOnClickListener(view -> {
+            sendToDatabase();
+            Intent toDetailRekamMedis = new Intent(FormRekamMedisActivity.this, ListRekamMedisActivity.class);
+            toDetailRekamMedis.putExtra("idPasien", idPasien);
+            toDetailRekamMedis.putExtra("namaPasien", namaPasien);
+            toDetailRekamMedis.putExtra("umurPasien", umurPasien);
+            toDetailRekamMedis.putExtra("alamatPasien", alamatPasien);
+            startActivity(toDetailRekamMedis);
         });
 
         et_namaPasien.setText(namaPasien);
@@ -99,7 +98,6 @@ public class FormRekamMedisActivity extends AppCompatActivity {
     }
 
     private void getMonthAndroid() {
-        calendar = Calendar.getInstance();
         tahun = calendar.get(Calendar.YEAR);
         bulanInt = calendar.get(Calendar.MONTH);
         tanggal = calendar.get(Calendar.DAY_OF_MONTH);
@@ -141,6 +139,12 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         });
     }
 
+    public String getCurrentLocalTimeStamp(int plus) {
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
+        calendar.add(Calendar.MINUTE, plus);
+        return currentTime.format(calendar.getTime());
+    }
+
     private void sendToDatabase() {
         reference = FirebaseDatabase.getInstance().getReference("Data RekamMedis Pasien");
         String key = reference.push().getKey();
@@ -163,8 +167,9 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         dataRekamMedis.put("bulanPelayanan", bulan);
         dataRekamMedis.put("tahunPelayanan", String.valueOf(tahun));
         dataRekamMedis.put("idRekamMedis", key);
+        dataRekamMedis.put("timePelayanan", getCurrentLocalTimeStamp(0));
 
-
+        assert key != null;
         reference.child(idPasien).child(key).setValue(dataRekamMedis);
     }
 }

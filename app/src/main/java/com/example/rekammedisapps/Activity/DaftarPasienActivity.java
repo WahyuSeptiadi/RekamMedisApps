@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.rekammedisapps.R;
@@ -33,7 +32,7 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class DaftarPasien extends AppCompatActivity implements View.OnClickListener {
+public class DaftarPasienActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText et_namapasien, et_alamatpasien, et_umurpasien;
     private CardView cv_btnregisterdp;
@@ -143,24 +142,24 @@ public class DaftarPasien extends AppCompatActivity implements View.OnClickListe
                                     reference.child(keyPasien).updateChildren(map);
 
                                     pd.dismiss();
-                                    startActivity(new Intent(DaftarPasien.this, HomeActivity.class));
+                                    startActivity(new Intent(DaftarPasienActivity.this, HomeActivity.class));
                                     finish();
 
-                                    Toast.makeText(DaftarPasien.this, "Daftar Pasien Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(DaftarPasienActivity.this, "Daftar Pasien Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(DaftarPasien.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DaftarPasienActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }else {
                         pd.dismiss();
-                        startActivity(new Intent(DaftarPasien.this, HomeActivity.class));
+                        startActivity(new Intent(DaftarPasienActivity.this, HomeActivity.class));
                         finish();
 
-                        Toast.makeText(DaftarPasien.this, "Upload tanpa foto profile", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DaftarPasienActivity.this, "Upload tanpa foto profile", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

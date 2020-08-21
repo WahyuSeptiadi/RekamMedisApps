@@ -21,8 +21,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:contentDescription="Halaman Rekam Medis"
-            android:src="@drawable/ic_back_white"
-            android:layout_marginLeft="10dp" />
+            android:src="@drawable/ic_back_white" />
 
         <TextView
             android:id="@+id/tv_lp_titlebar"
@@ -44,9 +43,9 @@
         tools:listitem="@layout/item_listpasien"
         />
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/pb_lp_progressBar"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerInParent="true" />-->
+    <ProgressBar
+        android:id="@+id/progressBar_listPasien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 </RelativeLayout>

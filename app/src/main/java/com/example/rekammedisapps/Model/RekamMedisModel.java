@@ -13,10 +13,18 @@ public class RekamMedisModel {
     private String keluhanPasien;
     private String imageURLPerawat;
     private String idRekamMedis;
+    private String timePelayanan;
 
     public RekamMedisModel(){
     }
 
+    public String getTimePelayanan() {
+        return timePelayanan;
+    }
+
+    public void setTimePelayanan(String timePelayanan) {
+        this.timePelayanan = timePelayanan;
+    }
 
     public String getIdPasien() {
         return idPasien;
