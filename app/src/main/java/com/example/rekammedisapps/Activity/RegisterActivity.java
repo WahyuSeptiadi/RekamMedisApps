@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText etUsername, etEmail, etPassword;
     private ImageView imgUpload, imgDelete;
     private CircleImageView civProfile;
+    private TextView tv_login;
 
     private Uri mImageUri;
 
@@ -63,6 +65,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         imgUpload = findViewById(R.id.iv_imageUploadProfile);
         imgDelete = findViewById(R.id.iv_imageDeleteProfile);
         civProfile = findViewById(R.id.civ_imageProfile);
+        tv_login = findViewById(R.id.tv_loginfirst);
+        tv_login.setOnClickListener(this);
 
         //inisialisasi
         auth = FirebaseAuth.getInstance();
@@ -85,6 +89,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.tv_loginfirst:
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                finish();
+                break;
             case R.id.cv_btnregister:
                 String username = etUsername.getText().toString();
                 String email = etEmail.getText().toString();

@@ -37,7 +37,7 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
     private EditText et_namapasien, et_alamatpasien, et_umurpasien;
     private CardView cv_btnregisterdp;
     private Uri mImageUri;
-    private ImageView iv_uploadimage, iv_deleteimage;
+    private ImageView iv_uploadimage, iv_deleteimage, iv_btnBack;
     private CircleImageView civ_imageprofilepasien;
 //    private ProgressBar progressBar;
 
@@ -63,6 +63,8 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
         iv_deleteimage = findViewById(R.id.iv_dp_imageDeleteProfilepasien);
         iv_deleteimage.setOnClickListener(this);
         civ_imageprofilepasien = findViewById(R.id.civ_dp_imagepasien);
+        iv_btnBack = findViewById(R.id.btnback_registry);
+        iv_btnBack.setOnClickListener(this);
 
         cv_btnregisterdp = findViewById(R.id.cv_dp_btnregister);
         cv_btnregisterdp.setOnClickListener(this);
@@ -92,6 +94,9 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
                 iv_deleteimage.setVisibility(View.GONE);
                 civ_imageprofilepasien.setImageResource(R.drawable.icon_cam_upload);
                 mImageUri = null;
+                break;
+            case R.id.btnback_registry:
+                startActivity(new Intent(DaftarPasienActivity.this, HomeActivity.class));
                 break;
             default:
                 break;

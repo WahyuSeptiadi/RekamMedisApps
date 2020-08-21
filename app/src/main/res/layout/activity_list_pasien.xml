@@ -28,9 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="List Pasien"
+            android:text="Daftar Pasien"
             android:textAlignment="center"
-            android:textColor="#fff"
+            android:textColor="@color/colorBlack"
             android:textSize="18sp"
             android:gravity="center_horizontal" />
     </RelativeLayout>

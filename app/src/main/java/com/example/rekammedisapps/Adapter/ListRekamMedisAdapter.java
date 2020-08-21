@@ -55,6 +55,10 @@ public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAd
             String keluhan = rekamMedisModel.getKeluhanPasien();
             String alamat = rekamMedisModel.getAlamatPasien();
             String imagePerawat = rekamMedisModel.getImageURLPerawat();
+            String riwayat = rekamMedisModel.getRiwayatPasien();
+            String diagnosa = rekamMedisModel.getDiagnosaPasien();
+            String rencana = rekamMedisModel.getRencanaPenataPasien();
+            String pengobatan = rekamMedisModel.getPengobatanPasien();
 
             //put to Detail Activity
             Intent sendData = new Intent(mActivity, DetailRekamMedisActivity.class);
@@ -67,6 +71,10 @@ public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAd
             sendData.putExtra("keluhan", keluhan);
             sendData.putExtra("alamat", alamat);
             sendData.putExtra("imageperawat", imagePerawat);
+            sendData.putExtra("riwayat", riwayat);
+            sendData.putExtra("diagnosa",diagnosa);
+            sendData.putExtra("rencana", rencana);
+            sendData.putExtra("pengobatan", pengobatan);
 
             mActivity.startActivity(sendData);
             mActivity.finish();

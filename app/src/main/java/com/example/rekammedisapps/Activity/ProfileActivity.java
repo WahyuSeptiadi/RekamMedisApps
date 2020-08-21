@@ -3,7 +3,10 @@ package com.example.rekammedisapps.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rekammedisapps.Model.UserModel;
@@ -23,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private CircleImageView civ_imageperawat;
     private TextView namaperawat, emailperawat;
+    private ImageView iv_btnBack;
 
     //Database
     private DatabaseReference reference;
@@ -35,14 +39,22 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        getDataUser();
+
 
         civ_imageperawat = findViewById(R.id.civ_profile_fotoperawat);
         namaperawat = findViewById(R.id.tv_profile_namaperawat);
         emailperawat = findViewById(R.id.tv_profile_emailperawat);
+        iv_btnBack = findViewById(R.id.btnback_profile);
+        iv_btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+            }
+        });
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
+        getDataUser();
     }
 
     private void getDataUser(){

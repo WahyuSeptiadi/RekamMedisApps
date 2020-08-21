@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="center_horizontal"
-            android:text="Profile"
+            android:text="Profil"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="18sp" />
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Rizky Maulana Iqbal"
+                    android:text="@string/str_dot"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Wahyu@gmail.com"
+                    android:text="@string/str_dot"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"/>
             </LinearLayout>
