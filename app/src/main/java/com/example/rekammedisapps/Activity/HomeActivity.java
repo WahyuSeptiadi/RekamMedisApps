@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         cv_daftarpasien = findViewById(R.id.cv_daftarpasien_home);
         cv_rekammedis = findViewById(R.id.cv_rekammedis_home);
         cv_profile = findViewById(R.id.cv_profleperawat_home);
-        cv_listperawat = findViewById(R.id.civ_listperawat_home);
+        cv_listperawat = findViewById(R.id.cv_listperawat_home);
         iv_logout = findViewById(R.id.iv_logout_home);
 
         cv_daftarpasien.setOnClickListener(this);
@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.cv_profleperawat_home:
                 startActivity(new Intent(this, ProfileActivity.class));
                 break;
-            case R.id.civ_listperawat_home:
+            case R.id.cv_listperawat_home:
                 startActivity(new Intent(this, ListPerawatActivity.class));
                 break;
             case R.id.iv_logout_home:

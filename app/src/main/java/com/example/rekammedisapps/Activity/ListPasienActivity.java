@@ -1,5 +1,6 @@
 package com.example.rekammedisapps.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,6 +50,13 @@ public class ListPasienActivity extends AppCompatActivity {
 
         //Button
         iv_btnback = findViewById(R.id.iv_lp_btnback);
+        iv_btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ListPasienActivity.this, HomeActivity.class));
+                finish();
+            }
+        });
 
         //InisialisasiDatabase
         reference = FirebaseDatabase.getInstance().getReference("Data Umum Pasien");

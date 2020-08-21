@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.example.rekammedisapps.Adapter.ListPerawatAdapter;
 import com.example.rekammedisapps.Model.UserModel;
@@ -32,15 +33,19 @@ public class ListPerawatActivity extends AppCompatActivity {
     //Database
     private DatabaseReference reference;
 
+    private ProgressBar pb_listperawat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_perawat);
         iv_btnBack = findViewById(R.id.iv_lperawat_btnback);
+        pb_listperawat = findViewById(R.id.progressBar_listPerawat);
         iv_btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ListPerawatActivity.this, HomeActivity.class));
+                finish();
             }
         });
 
@@ -48,11 +53,13 @@ public class ListPerawatActivity extends AppCompatActivity {
         rv_listPerawat.setLayoutManager(new LinearLayoutManager(this));
         rv_listPerawat.setHasFixedSize(true);
         rv_listPerawat.smoothScrollToPosition(0);
+
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        getAllData();
     }
 
     private void getAllData(){
         userModelArrayList = new ArrayList<>();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -64,6 +71,7 @@ public class ListPerawatActivity extends AppCompatActivity {
                 listPerawatAdapter = new ListPerawatAdapter(ListPerawatActivity.this, userModelArrayList);
                 rv_listPerawat.setAdapter(listPerawatAdapter);
                 listPerawatAdapter.notifyDataSetChanged();
+                pb_listperawat.setVisibility(View.GONE);
             }
 
             @Override

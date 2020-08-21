@@ -142,6 +142,7 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
             case R.id.btnback_detailrekammedis:
                 Intent backToList = new Intent(ListRekamMedisActivity.this, ListPasienActivity.class);
                 startActivity(backToList);
+                finish();
                 break;
             case R.id.add_drm_tambahrekammedis:
                 Intent toForm = new Intent(ListRekamMedisActivity.this, FormRekamMedisActivity.class);
@@ -151,6 +152,7 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
                 toForm.putExtra("alamatPasien", alamatPasien);
 
                 startActivity(toForm);
+                finish();
                 break;
             default:
                 break;

@@ -11,6 +11,10 @@ public class RekamMedisModel {
     private String alamatPasien;
     private String umurPasien;
     private String keluhanPasien;
+    private String riwayatPasien;
+    private String diagnosaPasien;
+    private String rencanaPenataPasien;
+    private String pengobatanPasien;
     private String imageURLPerawat;
     private String idRekamMedis;
     private String timePelayanan;
@@ -121,5 +125,37 @@ public class RekamMedisModel {
 
     public void setIdRekamMedis(String idRekamMedis) {
         this.idRekamMedis = idRekamMedis;
+    }
+
+    public String getRiwayatPasien() {
+        return riwayatPasien;
+    }
+
+    public void setRiwayatPasien(String riwayatPasien) {
+        this.riwayatPasien = riwayatPasien;
+    }
+
+    public String getDiagnosaPasien() {
+        return diagnosaPasien;
+    }
+
+    public void setDiagnosaPasien(String diagnosaPasien) {
+        this.diagnosaPasien = diagnosaPasien;
+    }
+
+    public String getRencanaPenataPasien() {
+        return rencanaPenataPasien;
+    }
+
+    public void setRencanaPenataPasien(String rencanaPenataPasien) {
+        this.rencanaPenataPasien = rencanaPenataPasien;
+    }
+
+    public String getPengobatanPasien() {
+        return pengobatanPasien;
+    }
+
+    public void setPengobatanPasien(String pengobatanPasien) {
+        this.pengobatanPasien = pengobatanPasien;
     }
 }

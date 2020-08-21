@@ -15,23 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/btnback_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:contentDescription="Halaman Awal"
-            android:src="@drawable/ic_back_white"
-            android:layout_marginLeft="10dp" />
-
         <TextView
             android:id="@+id/titlebar_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:text="Home"
+            android:text="Beranda"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="18sp"
@@ -76,7 +66,7 @@
                     android:id="@+id/civ_iconDoctorHome"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/icon_doctor"
+                    android:src="@drawable/patient"
                     app:civ_border_color="@color/colorAccent"
                     app:civ_border_width="0.6dp" />
 
@@ -86,7 +76,7 @@
                     android:layout_below="@+id/civ_iconDoctorHome"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="Daftar Pasien"
+                    android:text="Registrasi Pasien"
                     android:textColor="@color/colorBlack" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -112,7 +102,7 @@
                     android:id="@+id/civ_iconPickHome"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/icon_ticket"
+                    android:src="@drawable/rekammedis"
                     app:civ_border_color="@color/colorAccent"
                     app:civ_border_width="0.6dp" />
 
@@ -166,7 +156,7 @@
                     android:layout_below="@+id/civ_profileiconperawat_home"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="Profile"
+                    android:text="Profil"
                     android:textColor="@color/colorBlack" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -192,7 +182,7 @@
                     android:id="@+id/civ_listperawat_home"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/icon_ticket"
+                    android:src="@drawable/nurse"
                     app:civ_border_color="@color/colorAccent"
                     app:civ_border_width="0.6dp" />
 
@@ -202,7 +192,7 @@
                     android:layout_below="@+id/civ_listperawat_home"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="List Perawat"
+                    android:text="Daftar Perawat"
                     android:textColor="@color/colorBlack" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>

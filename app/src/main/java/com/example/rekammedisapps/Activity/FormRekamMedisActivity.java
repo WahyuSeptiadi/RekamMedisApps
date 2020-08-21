@@ -153,6 +153,10 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         String umur_pasien = et_umurPasien.getText().toString();
         String alamat_pasien = et_alamatPasien.getText().toString();
         String keluhan_pasien = et_keluhan.getText().toString();
+        String riwayat = et_riwayatpenyakit.getText().toString();
+        String diagnosa = et_diagnosa.getText().toString();
+        String rencana = et_rencanaPenata.getText().toString();
+        String pengobatan = et_pengobatan.getText().toString();
 
         HashMap<String, Object> dataRekamMedis = new HashMap<>();
         dataRekamMedis.put("namaPerawat", userModel.getUsername());
@@ -163,6 +167,10 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         dataRekamMedis.put("keluhanPasien", keluhan_pasien);
         dataRekamMedis.put("alamatPasien", alamat_pasien);
         dataRekamMedis.put("umurPasien", umur_pasien);
+        dataRekamMedis.put("riwayatPasien", riwayat);
+        dataRekamMedis.put("diagnosaPasien", diagnosa);
+        dataRekamMedis.put("rencanaPenataPasien", rencana);
+        dataRekamMedis.put("pengobatanPasien", pengobatan);
         dataRekamMedis.put("tanggalPelayanan", String.valueOf(tanggal));
         dataRekamMedis.put("bulanPelayanan", bulan);
         dataRekamMedis.put("tahunPelayanan", String.valueOf(tahun));

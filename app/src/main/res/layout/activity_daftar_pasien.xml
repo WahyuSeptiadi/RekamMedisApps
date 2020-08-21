@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Patient Registration"
+            android:text="Registrasi Pasien"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="18sp"

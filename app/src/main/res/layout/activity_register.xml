@@ -6,38 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Activity.RegisterActivity">
 
-    <include
-        android:id="@+id/topbar_registry"
-        layout="@layout/topbar_primary" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/btnback_registry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:contentDescription="Back"
-            android:src="@drawable/ic_back_white" />
-
-        <TextView
-            android:id="@+id/titlebar_registry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Halaman Register"
-            android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="18sp" />
-    </RelativeLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/topbar_registry"
+        android:paddingTop="50dp"
         tools:ignore="UselessParent">
 
         <RelativeLayout
@@ -169,26 +141,6 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!--                    <com.google.android.material.textfield.TextInputLayout-->
-                    <!--                        android:id="@+id/input_address"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_below="@id/input_password"-->
-                    <!--                        android:layout_centerHorizontal="true"-->
-                    <!--                        android:layout_marginTop="10dp">-->
-
-                    <!--                        <EditText-->
-                    <!--                            android:id="@+id/et_address_register"-->
-                    <!--                            android:layout_width="250dp"-->
-                    <!--                            android:layout_height="40dp"-->
-                    <!--                            android:autofillHints=""-->
-                    <!--                            android:background="@drawable/bg_round_white"-->
-                    <!--                            android:hint="masukkan alamat"-->
-                    <!--                            android:inputType="textCapWords"-->
-                    <!--                            android:paddingStart="20dp"-->
-                    <!--                            android:paddingEnd="10dp" />-->
-                    <!--                    </com.google.android.material.textfield.TextInputLayout>-->
-
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cv_btnregister"
                         android:layout_width="100dp"
@@ -216,6 +168,33 @@
                                 android:textSize="18sp" />
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cv_btnregister"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="30dp">
+
+                        <TextView
+                            android:id="@+id/tv_donthave_account"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sudah punya akun ?"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_loginfirst"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/tv_donthave_account"
+                            android:text="Login"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/tv_donthave_account" />
+                    </RelativeLayout>
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
