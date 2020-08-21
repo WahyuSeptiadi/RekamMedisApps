@@ -45,7 +45,7 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_rekam_medis);
+        setContentView(R.layout.activity_list_rekam_medis);
 
         getValueIntent();
 

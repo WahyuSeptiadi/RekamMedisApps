@@ -1,6 +1,7 @@
 package com.example.rekammedisapps.Adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rekammedisapps.Activity.DetailRekamMedisActivity;
 import com.example.rekammedisapps.Model.RekamMedisModel;
 import com.example.rekammedisapps.R;
 import com.squareup.picasso.Picasso;
@@ -50,7 +52,24 @@ public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAd
             String tahun = rekamMedisModel.getTahunPelayanan();
             String namaPasien = rekamMedisModel.getNamaPasien();
             String namaPerawat = rekamMedisModel.getNamaPerawat();
+            String keluhan = rekamMedisModel.getKeluhanPasien();
             String alamat = rekamMedisModel.getAlamatPasien();
+            String imagePerawat = rekamMedisModel.getImageURLPerawat();
+
+            //put to Detail Activity
+            Intent sendData = new Intent(mActivity, DetailRekamMedisActivity.class);
+            sendData.putExtra("time", time);
+            sendData.putExtra("tanggal", tanggal);
+            sendData.putExtra("bulan", bulan);
+            sendData.putExtra("tahun", tahun);
+            sendData.putExtra("namapasien", namaPasien);
+            sendData.putExtra("namaperawat", namaPerawat);
+            sendData.putExtra("keluhan", keluhan);
+            sendData.putExtra("alamat", alamat);
+            sendData.putExtra("imageperawat", imagePerawat);
+
+            mActivity.startActivity(sendData);
+            mActivity.finish();
         });
     }
 
