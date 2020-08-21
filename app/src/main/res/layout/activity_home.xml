@@ -38,6 +38,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_linepertama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -108,6 +109,86 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/civ_iconPickHome"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Rekam Medis"
+                    android:textColor="@color/colorBlack" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_linekedua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/rl_linepertama"
+        android:layout_centerHorizontal="true">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_profleperawat_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_profileiconperawat_home"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/icon_doctor"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="0.6dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/civ_profileiconperawat_home"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Profile"
+                    android:textColor="@color/colorBlack" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_logout_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toEndOf="@+id/cv_profleperawat_home"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@+id/cv_profleperawat_home">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_iconLogout_home"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/icon_ticket"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="0.6dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/civ_iconLogout_home"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="Rekam Medis"

@@ -61,6 +61,19 @@ public class DetailRekamMedisActivity extends AppCompatActivity implements View.
 
     private void getAllDetailRekam() {
         rekamMedisModelArrayList = new ArrayList<>();
+
+        reference.child(idPasien).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         reference.child(idPasien).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
