@@ -30,7 +30,7 @@
             android:layout_marginTop="15dp"
             android:text="Hasil Rekam Medis"
             android:textAlignment="center"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
     </RelativeLayout>
 
@@ -44,12 +44,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/iv_edit_rekammedis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tanggalpelayanan"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_edit_rekam_medis" />
+
             <LinearLayout
                 android:id="@+id/perawat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tanggalpelayanan"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -130,7 +142,7 @@
                 android:layout_below="@+id/perawat"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -148,13 +160,37 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/alamat"
+                android:id="@+id/umurpasien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/namapasien"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Umur Pasien\t\t\t\t: "
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/tv_umurpasien_detail_rekam_medis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/str_dot"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/alamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/umurpasien"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -178,7 +214,7 @@
                 android:layout_below="@+id/alamat"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -202,7 +238,7 @@
                 android:layout_below="@+id/keluhan"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -218,6 +254,7 @@
                     android:text="@string/str_dot"
                     android:textColor="@color/colorBlack" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/diagnosa"
                 android:layout_width="wrap_content"
@@ -225,12 +262,12 @@
                 android:layout_below="@+id/riwayat"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Diagnosa Pasien\t\t\t: "
+                    android:text="Diagnosa Pasien\t\t: "
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -241,6 +278,7 @@
                     android:text="@string/str_dot"
                     android:textColor="@color/colorBlack" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/rencanapenata"
                 android:layout_width="wrap_content"
@@ -248,12 +286,12 @@
                 android:layout_below="@+id/diagnosa"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rencana Penatalaksanaan\t\t\t: "
+                    android:text="Rencana Penatalaksanaan\t: "
                     android:textColor="@color/colorBlack" />
 
                 <TextView
@@ -264,6 +302,7 @@
                     android:text="@string/str_dot"
                     android:textColor="@color/colorBlack" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/pengobatan"
                 android:layout_width="wrap_content"
@@ -271,12 +310,12 @@
                 android:layout_below="@+id/rencanapenata"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pengobatan atau Tindakan\t\t\t: "
+                    android:text="Pengobatan atau Tindakan\t: "
                     android:textColor="@color/colorBlack" />
 
                 <TextView

@@ -31,7 +31,6 @@ public class ListPasienActivity extends AppCompatActivity {
 
     private ProgressBar pb_listpasien;
     private RecyclerView rv_listpasien;
-    private ImageView iv_btnback;
     private ArrayList<PasienModel> pasienModelArrayList;
 
     //Class
@@ -49,7 +48,7 @@ public class ListPasienActivity extends AppCompatActivity {
         rv_listpasien.smoothScrollToPosition(0);
 
         //Button
-        iv_btnback = findViewById(R.id.iv_lp_btnback);
+        ImageView iv_btnback = findViewById(R.id.iv_lp_btnback);
         iv_btnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

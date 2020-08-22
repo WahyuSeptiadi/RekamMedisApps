@@ -148,7 +148,7 @@
                         android:layout_below="@id/input_password"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginBottom="10dp"
                         app:cardBackgroundColor="@color/colorPrimary"
                         app:cardCornerRadius="13dp"
                         app:cardElevation="10dp">
@@ -168,12 +168,13 @@
                                 android:textSize="18sp" />
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
+
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/cv_btnregister"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="30dp">
+                        android:layout_marginBottom="20dp">
 
                         <TextView
                             android:id="@+id/tv_donthave_account"
@@ -188,12 +189,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
                             android:layout_toEndOf="@+id/tv_donthave_account"
                             android:text="Login"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="16sp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_toRightOf="@+id/tv_donthave_account" />
+                            android:textSize="16sp" />
                     </RelativeLayout>
 
                 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,26 +22,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class ListRekamMedisActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView iv_btnBack;
-    private FloatingActionButton btnAdd;
     private RecyclerView recyclerView;
     private ArrayList<RekamMedisModel> rekamMedisModelArrayList;
-
+    private ProgressBar progressBar;
     private ListRekamMedisAdapter listRekamMedisAdapter;
 
     //GetValueIntent
     private String idPasien, namaPasien, umurPasien, alamatPasien;
     //Database
     private DatabaseReference reference;
-    private Calendar calendar;
-    private int tahun, bulanInt, tanggal;
-    private String bulan;
+
+//    private Calendar calendar;
+//    private int tahun, bulanInt, tanggal;
+//    private String bulan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +47,17 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
 
         getValueIntent();
 
+        progressBar = findViewById(R.id.progressBar_listRekamMedis);
         recyclerView = findViewById(R.id.rv_list_detailrekammedis);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.smoothScrollToPosition(0);
 
         reference = FirebaseDatabase.getInstance().getReference("Data RekamMedis Pasien");
-        calendar = Calendar.getInstance();
+//        calendar = Calendar.getInstance();
 
-        iv_btnBack = findViewById(R.id.btnback_detailrekammedis);
-        btnAdd = findViewById(R.id.add_drm_tambahrekammedis);
+        ImageView iv_btnBack = findViewById(R.id.btnback_detailrekammedis);
+        FloatingActionButton btnAdd = findViewById(R.id.add_drm_tambahrekammedis);
         iv_btnBack.setOnClickListener(this);
         btnAdd.setOnClickListener(this);
 
@@ -68,39 +67,24 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
     private void getAllDetailRekam() {
         rekamMedisModelArrayList = new ArrayList<>();
 
-        reference.child(idPasien).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
         reference.child(idPasien).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 rekamMedisModelArrayList.clear();
                 if (!snapshot.exists()) {
-                    Toast.makeText(ListRekamMedisActivity.this, "Maaf, rekam medis masih kosong kosong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListRekamMedisActivity.this, "Maaf, rekam medis masih kosong", Toast.LENGTH_SHORT).show();
                 } else {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         RekamMedisModel rekamMedisModel = dataSnapshot.getValue(RekamMedisModel.class);
                         assert rekamMedisModel != null;
-//                        if (rekamMedisModel.getBulanPelayanan().equals(getCurrentMonth()) &&
-//                                rekamMedisModel.getTahunPelayanan().equals(String.valueOf(getCurrentYear()))) {
-                            rekamMedisModelArrayList.add(rekamMedisModel);
-//                        }
+                        rekamMedisModelArrayList.add(rekamMedisModel);
                     }
 
                     listRekamMedisAdapter = new ListRekamMedisAdapter(ListRekamMedisActivity.this, rekamMedisModelArrayList);
                     recyclerView.setAdapter(listRekamMedisAdapter);
                     listRekamMedisAdapter.notifyDataSetChanged();
                 }
-
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -110,37 +94,37 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
         });
     }
 
-    private int getCurrentDate() {
-        tanggal = calendar.get(Calendar.DAY_OF_MONTH);
-        return tanggal;
-    }
+//    private int getCurrentDate() {
+//        tanggal = calendar.get(Calendar.DAY_OF_MONTH);
+//        return tanggal;
+//    }
+//
+//    private String getCurrentMonth() {
+//        bulanInt = calendar.get(Calendar.MONTH);
+//        bulan = getMonthForInt(bulanInt);
+//        return bulan;
+//    }
+//
+//    private int getCurrentYear() {
+//        tahun = calendar.get(Calendar.YEAR);
+//        return tahun;
+//    }
 
-    private String getCurrentMonth() {
-        bulanInt = calendar.get(Calendar.MONTH);
-        bulan = getMonthForInt(bulanInt);
-        return bulan;
-    }
-
-    private int getCurrentYear() {
-        tahun = calendar.get(Calendar.YEAR);
-        return tahun;
-    }
-
-    private String getMonthForInt(int num) {
-        String month = "wrong";
-        DateFormatSymbols dfs = new DateFormatSymbols();
-        String[] months = dfs.getMonths();
-        if (num >= 0 && num <= 11) {
-            month = months[num];
-        }
-        return month;
-    }
+//    private String getMonthForInt(int num) {
+//        String month = "wrong";
+//        DateFormatSymbols dfs = new DateFormatSymbols();
+//        String[] months = dfs.getMonths();
+//        if (num >= 0 && num <= 11) {
+//            month = months[num];
+//        }
+//        return month;
+//    }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnback_detailrekammedis:
-                Intent backToList = new Intent(ListRekamMedisActivity.this, ListPasienActivity.class);
+                Intent backToList = new Intent(ListRekamMedisActivity.this, HomeActivity.class);
                 startActivity(backToList);
                 finish();
                 break;

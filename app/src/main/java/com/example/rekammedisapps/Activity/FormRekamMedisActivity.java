@@ -3,8 +3,8 @@ package com.example.rekammedisapps.Activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,6 +48,11 @@ public class FormRekamMedisActivity extends AppCompatActivity {
     private int tahun, bulanInt, tanggal;
     private String bulan;
 
+    //intent from detail rekam medis
+    private String getTime, getTanggal, getBulan, getTahun;
+    private String getNamaPasien, getUmurPasien, getNamaPerawat, getAlamat, getKeluhan, getImagePerawat, getRiwayat, getDiagnosa, getRencana, getPengobatan;
+    private String getIdPasien, getIdPerawat, getIdRekam;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +65,7 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         getValueInten();
         getMonthAndroid();
         getDataPerawat();
+        getDataIntent();
 
         et_namaPasien = findViewById(R.id.et_frm_nama);
         et_umurPasien = findViewById(R.id.et_frm_umur);
@@ -69,22 +75,59 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         et_diagnosa = findViewById(R.id.et_frm_diagnosa);
         et_rencanaPenata = findViewById(R.id.et_frm_rencanapenatalaksanaan);
         et_pengobatan = findViewById(R.id.et_frm_pengobatan);
-
         btnAddRekamMedis = findViewById(R.id.cv_frm_btnaddrekammedis);
+        TextView titlebar = findViewById(R.id.titlebar_profile);
+
+        if (getIdPasien != null) {
+            et_namaPasien.setText(getNamaPasien);
+            et_alamatPasien.setText(getAlamat);
+            et_diagnosa.setText(getDiagnosa);
+            et_keluhan.setText(getKeluhan);
+            et_rencanaPenata.setText(getRencana);
+            et_riwayatpenyakit.setText(getRiwayat);
+            et_pengobatan.setText(getPengobatan);
+            et_umurPasien.setText(getUmurPasien);
+            titlebar.setText(R.string.str_update_rekammedis);
+        } else {
+            et_namaPasien.setText(namaPasien);
+            et_umurPasien.setText(umurPasien);
+            et_alamatPasien.setText(alamatPasien);
+        }
+
         btnAddRekamMedis.setOnClickListener(view -> {
-            sendToDatabase();
-            Intent toDetailRekamMedis = new Intent(FormRekamMedisActivity.this, ListRekamMedisActivity.class);
-            toDetailRekamMedis.putExtra("idPasien", idPasien);
-            toDetailRekamMedis.putExtra("namaPasien", namaPasien);
-            toDetailRekamMedis.putExtra("umurPasien", umurPasien);
-            toDetailRekamMedis.putExtra("alamatPasien", alamatPasien);
-            startActivity(toDetailRekamMedis);
+            if (getIdPasien != null && getIdRekam != null) {
+                updateToDatabase();
+                Intent toListRekamMedis = new Intent(FormRekamMedisActivity.this, ListRekamMedisActivity.class);
+                toListRekamMedis.putExtra("idPasien", getIdPasien);
+                startActivity(toListRekamMedis);
+            } else {
+                sendToDatabase();
+                Intent toListRekamMedis = new Intent(FormRekamMedisActivity.this, ListRekamMedisActivity.class);
+                toListRekamMedis.putExtra("idPasien", idPasien);
+                startActivity(toListRekamMedis);
+            }
         });
+    }
 
-        et_namaPasien.setText(namaPasien);
-        et_umurPasien.setText(umurPasien);
-        et_alamatPasien.setText(alamatPasien);
-
+    private void getDataIntent() {
+        Intent getData = getIntent();
+//        getTime = getData.getStringExtra("time");
+//        getTanggal = getData.getStringExtra("tanggal");
+//        getBulan = getData.getStringExtra("bulan");
+//        getTahun = getData.getStringExtra("tahun");
+//        getIdPerawat = getData.getStringExtra("idperawat");
+//        getNamaPerawat = getData.getStringExtra("namaperawat");
+//        getImagePerawat = getData.getStringExtra("imageperawat");
+        getIdRekam = getData.getStringExtra("idrekam");
+        getIdPasien = getData.getStringExtra("idpasien");
+        getNamaPasien = getData.getStringExtra("namapasien");
+        getUmurPasien = getData.getStringExtra("umurpasien");
+        getKeluhan = getData.getStringExtra("keluhan");
+        getAlamat = getData.getStringExtra("alamat");
+        getRiwayat = getData.getStringExtra("riwayat");
+        getDiagnosa = getData.getStringExtra("diagnosa");
+        getRencana = getData.getStringExtra("rencana");
+        getPengobatan = getData.getStringExtra("pengobatan");
     }
 
     private void getValueInten() {
@@ -179,5 +222,39 @@ public class FormRekamMedisActivity extends AppCompatActivity {
 
         assert key != null;
         reference.child(idPasien).child(key).setValue(dataRekamMedis);
+    }
+
+    private void updateToDatabase() {
+        reference = FirebaseDatabase.getInstance().getReference("Data RekamMedis Pasien");
+
+        String nama_pasien = et_namaPasien.getText().toString();
+        String umur_pasien = et_umurPasien.getText().toString();
+        String alamat_pasien = et_alamatPasien.getText().toString();
+        String keluhan_pasien = et_keluhan.getText().toString();
+        String riwayat = et_riwayatpenyakit.getText().toString();
+        String diagnosa = et_diagnosa.getText().toString();
+        String rencana = et_rencanaPenata.getText().toString();
+        String pengobatan = et_pengobatan.getText().toString();
+
+        HashMap<String, Object> dataRekamMedis = new HashMap<>();
+        dataRekamMedis.put("namaPerawat", userModel.getUsername()); //jika yang update beda perawat
+        dataRekamMedis.put("imageURLPerawat", userModel.getImageURL()); //jika yang update beda perawat
+        dataRekamMedis.put("idPerawat", idPerawat); //jika yang update beda perawat
+        dataRekamMedis.put("idPasien", getIdPasien);
+        dataRekamMedis.put("idRekamMedis", getIdRekam);
+        dataRekamMedis.put("namaPasien", nama_pasien);
+        dataRekamMedis.put("keluhanPasien", keluhan_pasien);
+        dataRekamMedis.put("alamatPasien", alamat_pasien);
+        dataRekamMedis.put("umurPasien", umur_pasien);
+        dataRekamMedis.put("riwayatPasien", riwayat);
+        dataRekamMedis.put("diagnosaPasien", diagnosa);
+        dataRekamMedis.put("rencanaPenataPasien", rencana);
+        dataRekamMedis.put("pengobatanPasien", pengobatan);
+        dataRekamMedis.put("timePelayanan", getCurrentLocalTimeStamp(0)); //get current time aja
+        dataRekamMedis.put("tanggalPelayanan", String.valueOf(tanggal)); //get current time aja
+        dataRekamMedis.put("bulanPelayanan", bulan); //get current time aja
+        dataRekamMedis.put("tahunPelayanan", String.valueOf(tahun)); //get current time aja
+
+        reference.child(getIdPasien).child(getIdRekam).setValue(dataRekamMedis);
     }
 }

@@ -57,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        ImageView btnBack = findViewById(R.id.btnback_registry);
         etUsername = findViewById(R.id.et_username_registry);
         etEmail = findViewById(R.id.et_email_registry);
         etPassword = findViewById(R.id.et_password_registry);
@@ -76,11 +75,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         imgUpload.setOnClickListener(this);
         imgDelete.setOnClickListener(this);
         btnRegistry.setOnClickListener(this);
-
-        btnBack.setOnClickListener(view -> {
-            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-            finish();
-        });
 
         //hide keyboard first
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -107,6 +101,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 } else {
                     Toast.makeText(this, "Tolong lengkapi semua field ya", Toast.LENGTH_SHORT).show();
                 }
+
                 break;
             case R.id.iv_imageUploadProfile:
                 imgUpload.setVisibility(View.GONE);

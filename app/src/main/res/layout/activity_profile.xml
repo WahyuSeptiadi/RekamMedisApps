@@ -20,7 +20,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:contentDescription="Halaman Awal"
             android:src="@drawable/ic_back_white" />
@@ -31,9 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="center_horizontal"
-            android:text="Profil"
+            android:text="Profil Saya"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
     </RelativeLayout>
 

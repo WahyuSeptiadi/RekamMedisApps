@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activity.FormRekamMedisActivity">
 
     <include
@@ -20,7 +20,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:contentDescription="Halaman Awal"
             android:src="@drawable/ic_back_white" />
@@ -33,7 +32,7 @@
             android:gravity="center_horizontal"
             android:text="Form Pengisian Rekam Medis"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp" />
     </RelativeLayout>
 
@@ -45,7 +44,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="18dp">
+            android:layout_margin="15dp">
 
             <RelativeLayout
                 android:id="@+id/rv_nama"
@@ -59,14 +58,13 @@
                     android:layout_height="wrap_content"
                     android:text="Nama Pasien"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/sizesubTitle"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sizesubTitle" />
 
                 <EditText
-                    android:layout_below="@+id/tv_nama"
                     android:id="@+id/et_frm_nama"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/tv_nama"
                     android:layout_marginTop="5dp"
                     android:autofillHints=""
                     android:background="@drawable/bg_round_white"
@@ -75,6 +73,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/rv_alamat"
                 android:layout_width="wrap_content"
@@ -88,8 +87,7 @@
                     android:layout_height="wrap_content"
                     android:text="Alamat Pasien"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/sizesubTitle"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sizesubTitle" />
 
                 <EditText
                     android:id="@+id/et_frm_alamat"
@@ -104,6 +102,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/rv_umur"
                 android:layout_width="wrap_content"
@@ -117,8 +116,7 @@
                     android:layout_height="wrap_content"
                     android:text="Umur Pasien"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/sizesubTitle"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sizesubTitle" />
 
                 <EditText
                     android:id="@+id/et_frm_umur"
@@ -133,6 +131,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/rv_keluhan"
                 android:layout_width="wrap_content"
@@ -144,10 +143,9 @@
                     android:id="@+id/tv_keluhan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Keluhan"
+                    android:text="Keluhan Pasien"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/sizesubTitle"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sizesubTitle" />
 
                 <EditText
                     android:id="@+id/et_frm_keluhan"
@@ -176,8 +174,7 @@
                     android:layout_height="wrap_content"
                     android:text="Riwayat Penyakit"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/sizesubTitle"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sizesubTitle" />
 
                 <EditText
                     android:id="@+id/et_frm_riwayat"
@@ -206,8 +203,7 @@
                     android:layout_height="wrap_content"
                     android:text="Diagnosa Penyakit"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/sizesubTitle"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sizesubTitle" />
 
                 <EditText
                     android:id="@+id/et_frm_diagnosa"
@@ -236,8 +232,7 @@
                     android:layout_height="wrap_content"
                     android:text="Rencana Penatalaksanaan"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/sizesubTitle"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sizesubTitle" />
 
                 <EditText
                     android:id="@+id/et_frm_rencanapenatalaksanaan"
@@ -266,8 +261,7 @@
                     android:layout_height="wrap_content"
                     android:text="Pengobatan atau Tindakan"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/sizesubTitle"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sizesubTitle" />
 
                 <EditText
                     android:id="@+id/et_frm_pengobatan"
@@ -282,6 +276,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp" />
             </RelativeLayout>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_frm_btnaddrekammedis"
                 android:layout_width="100dp"
@@ -289,7 +284,7 @@
                 android:layout_below="@id/rv_pengobatan"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="50dp"
                 app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="13dp"
                 app:cardElevation="10dp">
@@ -304,7 +299,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:text="RekamMedis"
+                        android:text="Simpan"
                         android:textColor="@color/colorWhite"
                         android:textSize="13sp" />
                 </RelativeLayout>

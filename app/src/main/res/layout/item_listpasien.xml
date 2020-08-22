@@ -34,8 +34,7 @@
                 android:layout_toEndOf="@+id/civ_lp_fotopasien"
                 android:text="@string/str_dot"
                 android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

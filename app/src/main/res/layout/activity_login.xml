@@ -33,7 +33,7 @@
                     android:id="@+id/civ_logoApps"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:src="@drawable/login"
+                    android:src="@drawable/icon_login"
                     app:civ_border_color="@color/colorPrimary"
                     app:civ_border_width="0.5dp"
                     app:layout_constraintBottom_toBottomOf="parent"

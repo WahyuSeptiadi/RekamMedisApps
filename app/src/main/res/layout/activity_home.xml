@@ -21,110 +21,29 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
             android:text="Beranda"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:gravity="center_horizontal" />
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/iv_logout_home"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/logout"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="15dp"
-            />
+            android:src="@drawable/logout" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_linepertama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_below="@+id/topbar_profile"
-        android:layout_centerHorizontal="true">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_daftarpasien_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/civ_iconDoctorHome"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/patient"
-                    app:civ_border_color="@color/colorAccent"
-                    app:civ_border_width="0.6dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/civ_iconDoctorHome"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:text="Registrasi Pasien"
-                    android:textColor="@color/colorBlack" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_rekammedis_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="15dp"
-            android:layout_toEndOf="@+id/cv_daftarpasien_home"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            android:layout_marginRight="15dp"
-            android:layout_toRightOf="@+id/cv_daftarpasien_home">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/civ_iconPickHome"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/rekammedis"
-                    app:civ_border_color="@color/colorAccent"
-                    app:civ_border_width="0.6dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/civ_iconPickHome"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:text="Rekam Medis"
-                    android:textColor="@color/colorBlack" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_linekedua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/rl_linepertama"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_profleperawat_home"
@@ -146,7 +65,7 @@
                     android:id="@+id/civ_profileiconperawat_home"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/icon_doctor"
+                    android:src="@drawable/icon_profile"
                     app:civ_border_color="@color/colorAccent"
                     app:civ_border_width="0.6dp" />
 
@@ -167,11 +86,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
             android:layout_toEndOf="@+id/cv_profleperawat_home"
             app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            android:layout_marginRight="15dp"
-            android:layout_toRightOf="@+id/cv_profleperawat_home">
+            app:cardElevation="10dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -182,7 +100,7 @@
                     android:id="@+id/civ_listperawat_home"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/nurse"
+                    android:src="@drawable/icon_perawat"
                     app:civ_border_color="@color/colorAccent"
                     app:civ_border_width="0.6dp" />
 
@@ -193,6 +111,86 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="Daftar Perawat"
+                    android:textColor="@color/colorBlack" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_linekedua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_linepertama"
+        android:layout_centerHorizontal="true">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_daftarpasien_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="15dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_iconDoctorHome"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/icon_registrasi"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="0.6dp" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/civ_iconDoctorHome"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Registrasi Pasien"
+                    android:textColor="@color/colorBlack" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_rekammedis_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toEndOf="@+id/cv_daftarpasien_home"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_iconPickHome"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/icon_rekammedis"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="0.6dp" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/civ_iconPickHome"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Rekam Medis Pasien"
+                    android:textAlignment="center"
                     android:textColor="@color/colorBlack" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>

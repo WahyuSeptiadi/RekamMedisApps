@@ -20,8 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/ic_back_white"
-            android:layout_marginLeft="10dp" />
+            android:src="@drawable/ic_back_white"/>
 
         <TextView
             android:id="@+id/titlebar_registry"
@@ -30,7 +29,7 @@
             android:layout_marginTop="15dp"
             android:text="Registrasi Pasien"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:gravity="center_horizontal" />
     </RelativeLayout>
