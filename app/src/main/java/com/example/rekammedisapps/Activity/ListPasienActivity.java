@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -49,12 +50,9 @@ public class ListPasienActivity extends AppCompatActivity {
 
         //Button
         ImageView iv_btnback = findViewById(R.id.iv_lp_btnback);
-        iv_btnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ListPasienActivity.this, HomeActivity.class));
-                finish();
-            }
+        iv_btnback.setOnClickListener(view -> {
+            startActivity(new Intent(ListPasienActivity.this, HomeActivity.class));
+            finish();
         });
 
         //InisialisasiDatabase
@@ -65,8 +63,9 @@ public class ListPasienActivity extends AppCompatActivity {
 
     private void getAllPasien() {
         pasienModelArrayList = new ArrayList<>();
+        Query query = reference.orderByChild("nama");
 
-        reference.addValueEventListener(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 pasienModelArrayList.clear();
