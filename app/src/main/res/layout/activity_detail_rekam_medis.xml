@@ -136,12 +136,36 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/namapasien"
+                android:id="@+id/nomerRekam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/perawat"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nomer Rekam\t\t\t\t: "
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/tv_nomerrekam_detail_rekam_medis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/str_dot"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/namapasien"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomerRekam"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -280,10 +304,34 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rencanapenata"
+                android:id="@+id/RujukanPoli"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/diagnosa"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rujukan Poli\t\t\t\t\t: "
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/tv_rujukanpoli_detail_rekam_medis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/str_dot"
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rencanapenata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RujukanPoli"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
@@ -326,29 +374,7 @@
                     android:text="@string/str_dot"
                     android:textColor="@color/colorBlack" />
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/RujukanPoli"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/pengobatan"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rujukan Poli\t: "
-                    android:textColor="@color/colorBlack" />
-
-                <TextView
-                    android:id="@+id/tv_rujukanpoli_detail_rekam_medis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="@string/str_dot"
-                    android:textColor="@color/colorBlack" />
-            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

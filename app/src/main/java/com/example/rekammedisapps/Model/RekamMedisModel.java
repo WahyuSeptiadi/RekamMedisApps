@@ -19,8 +19,17 @@ public class RekamMedisModel {
     private String idRekamMedis;
     private String timePelayanan;
     private String rujukanPoli;
+    private String nomerRekam;
 
     public RekamMedisModel(){
+    }
+
+    public String getNomerRekam() {
+        return nomerRekam;
+    }
+
+    public void setNomerRekam(String nomerRekam) {
+        this.nomerRekam = nomerRekam;
     }
 
     public String getTimePelayanan() {

@@ -34,7 +34,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="15dp"
-            android:src="@drawable/logout" />
+            android:src="@drawable/ic_round_exit"
+            android:contentDescription="@string/todo" />
     </RelativeLayout>
 
     <RelativeLayout

@@ -23,12 +23,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Objects;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAdapter.ViewHolder> {
 
@@ -71,6 +68,7 @@ public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAd
             String diagnosa = rekamMedisModel.getDiagnosaPasien();
             String rencana = rekamMedisModel.getRencanaPenataPasien();
             String pengobatan = rekamMedisModel.getPengobatanPasien();
+            String nomerRekam = rekamMedisModel.getNomerRekam();
 
             //put to Detail Activity
             Intent sendData = new Intent(mActivity, DetailRekamMedisActivity.class);
@@ -92,6 +90,7 @@ public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAd
             sendData.putExtra("idperawat", rekamMedisModel.getIdPerawat());
             sendData.putExtra("idrekam", rekamMedisModel.getIdRekamMedis());
             sendData.putExtra("rujukanPoli", rekamMedisModel.getRujukanPoli());
+            sendData.putExtra("nomerRekam", nomerRekam);
 
             mActivity.startActivity(sendData);
             mActivity.finish();
