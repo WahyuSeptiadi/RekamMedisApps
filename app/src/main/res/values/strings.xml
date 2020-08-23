@@ -30,4 +30,13 @@
     <string name="str_delete">HAPUS</string>
     <string name="str_edit">Edit</string>
     <string name="str_choice">Silahkan pilih aksi</string>
+    <string-array name="listpoli">
+        <item>Poli Umum</item>
+        <item>Poli Obyin</item>
+        <item>Poli Bedah</item>
+        <item>Poli Dalam</item>
+        <item>Poli Mata</item>
+        <item>Poli Gigi</item>
+        <item>Poli Saraf</item>
+    </string-array>
 </resources>

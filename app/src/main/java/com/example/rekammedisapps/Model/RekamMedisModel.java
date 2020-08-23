@@ -18,6 +18,7 @@ public class RekamMedisModel {
     private String imageURLPerawat;
     private String idRekamMedis;
     private String timePelayanan;
+    private String rujukanPoli;
 
     public RekamMedisModel(){
     }
@@ -157,5 +158,13 @@ public class RekamMedisModel {
 
     public void setPengobatanPasien(String pengobatanPasien) {
         this.pengobatanPasien = pengobatanPasien;
+    }
+
+    public String getRujukanPoli() {
+        return rujukanPoli;
+    }
+
+    public void setRujukanPoli(String rujukanPoli) {
+        this.rujukanPoli = rujukanPoli;
     }
 }

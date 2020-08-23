@@ -3,7 +3,10 @@ package com.example.rekammedisapps.Activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class FormRekamMedisActivity extends AppCompatActivity {
+public class FormRekamMedisActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private CardView btnAddRekamMedis;
 
@@ -47,11 +50,12 @@ public class FormRekamMedisActivity extends AppCompatActivity {
     private Calendar calendar;
     private int tahun, bulanInt, tanggal;
     private String bulan;
+    private Spinner spinnerPoli;
 
     //intent from detail rekam medis
     private String getTime, getTanggal, getBulan, getTahun;
     private String getNamaPasien, getUmurPasien, getNamaPerawat, getAlamat, getKeluhan, getImagePerawat, getRiwayat, getDiagnosa, getRencana, getPengobatan;
-    private String getIdPasien, getIdPerawat, getIdRekam;
+    private String getIdPasien, getIdPerawat, getIdRekam, getRujukanpoli;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,8 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         et_rencanaPenata = findViewById(R.id.et_frm_rencanapenatalaksanaan);
         et_pengobatan = findViewById(R.id.et_frm_pengobatan);
         btnAddRekamMedis = findViewById(R.id.cv_frm_btnaddrekammedis);
+        spinnerPoli = findViewById(R.id.spinner_poli);
+        spinnerPoli.setOnItemSelectedListener(this);
         TextView titlebar = findViewById(R.id.titlebar_profile);
 
         if (getIdPasien != null) {
@@ -128,6 +134,7 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         getDiagnosa = getData.getStringExtra("diagnosa");
         getRencana = getData.getStringExtra("rencana");
         getPengobatan = getData.getStringExtra("pengobatan");
+
     }
 
     private void getValueInten() {
@@ -219,6 +226,7 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         dataRekamMedis.put("tahunPelayanan", String.valueOf(tahun));
         dataRekamMedis.put("idRekamMedis", key);
         dataRekamMedis.put("timePelayanan", getCurrentLocalTimeStamp(0));
+        dataRekamMedis.put("rujukanPoli", getRujukanpoli);
 
         assert key != null;
         reference.child(idPasien).child(key).setValue(dataRekamMedis);
@@ -254,7 +262,23 @@ public class FormRekamMedisActivity extends AppCompatActivity {
         dataRekamMedis.put("tanggalPelayanan", String.valueOf(tanggal)); //get current time aja
         dataRekamMedis.put("bulanPelayanan", bulan); //get current time aja
         dataRekamMedis.put("tahunPelayanan", String.valueOf(tahun)); //get current time aja
+        dataRekamMedis.put("rujukanPoli", getRujukanpoli);
 
         reference.child(getIdPasien).child(getIdRekam).setValue(dataRekamMedis);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        getRujukanpoli = adapterView.getSelectedItem().toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

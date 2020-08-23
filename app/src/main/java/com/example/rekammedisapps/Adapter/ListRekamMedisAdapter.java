@@ -91,6 +91,7 @@ public class ListRekamMedisAdapter extends RecyclerView.Adapter<ListRekamMedisAd
             sendData.putExtra("idpasien", rekamMedisModel.getIdPasien());
             sendData.putExtra("idperawat", rekamMedisModel.getIdPerawat());
             sendData.putExtra("idrekam", rekamMedisModel.getIdRekamMedis());
+            sendData.putExtra("rujukanPoli", rekamMedisModel.getRujukanPoli());
 
             mActivity.startActivity(sendData);
             mActivity.finish();
