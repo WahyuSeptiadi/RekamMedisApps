@@ -194,11 +194,9 @@
                             android:autofillHints=""
                             android:background="@drawable/bg_round_white"
                             android:hint="Keluhan Pasien"
-                            android:inputType="number"
+                            android:inputType="textCapSentences"
                             android:paddingStart="20dp"
-                            android:paddingEnd="10dp"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="10dp" />
+                            android:paddingEnd="10dp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -218,12 +216,10 @@
                             android:layout_height="40dp"
                             android:autofillHints=""
                             android:background="@drawable/bg_round_white"
-                            android:hint="Keluhan Pasien"
-                            android:inputType="number"
+                            android:hint="Riwayat Pasien"
+                            android:inputType="textCapSentences"
                             android:paddingStart="20dp"
-                            android:paddingEnd="10dp"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="10dp" />
+                            android:paddingEnd="10dp"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 

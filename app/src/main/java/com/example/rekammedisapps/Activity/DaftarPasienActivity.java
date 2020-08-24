@@ -129,6 +129,7 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
         saveDataPatient.put("idUser", idUser);
         saveDataPatient.put("imageURL", "default");
 
+        assert keyPasien != null;
         reference.child(keyPasien).setValue(saveDataPatient).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
