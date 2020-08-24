@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -35,20 +37,23 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
-        getTypeUser();
+
+
         cv_daftarpasien = findViewById(R.id.cv_daftarpasien_home);
         cv_rekammedis = findViewById(R.id.cv_rekammedis_home);
         cv_profile = findViewById(R.id.cv_profleperawat_home);
         cv_listperawat = findViewById(R.id.cv_listperawat_home);
         iv_logout = findViewById(R.id.iv_logout_home);
 
-
         cv_daftarpasien.setOnClickListener(this);
         cv_rekammedis.setOnClickListener(this);
         cv_profile.setOnClickListener(this);
         cv_listperawat.setOnClickListener(this);
         iv_logout.setOnClickListener(this);
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        getDataUser();
+//        Toast.makeText(this, userModel.getTypeUser(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -93,14 +98,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         alertDialog.show();
     }
 
-    private void getTypeUser(){
-        String idPasien = mUser.getUid();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(idPasien).addValueEventListener(new ValueEventListener() {
+    private void getDataUser(){
+        String idUser = mUser.getUid();
+        reference.child(idUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userModel = snapshot.getValue(UserModel.class);
-                typeUser = userModel.getUserType();
+                assert userModel != null;
+                typeUser = userModel.getTypeUser().toString();
             }
 
             @Override

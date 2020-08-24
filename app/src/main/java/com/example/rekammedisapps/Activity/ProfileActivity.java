@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rekammedisapps.Model.UserModel;
 import com.example.rekammedisapps.R;
@@ -55,6 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         getDataUser();
+//        Toast.makeText(this, userModel.getUsername(), Toast.LENGTH_SHORT).show();
     }
 
     private void getDataUser(){

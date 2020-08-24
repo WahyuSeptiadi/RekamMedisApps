@@ -52,16 +52,18 @@ public class ListPasienActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_pasien);
         reference = FirebaseDatabase.getInstance().getReference("Data Umum Pasien");
-        reference2 = FirebaseDatabase.getInstance().getReference("Users");
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
-        idPasien = mUser.getUid();
 
-        getTypeUser();
-        if (typeUser.equals("admin")) {
-            getAllPasien();
-        } else {
-            getOnePasien();
-        }
+
+//        idPasien = mUser.getUid();
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        reference2 = FirebaseDatabase.getInstance().getReference("Users");
+        getPasien();
+//        getTypeUser();
+//        if (typeUser.equals("admin")) {
+//            getAllPasien();
+//        } else {
+//            getOnePasien();
+//        }
         pb_listpasien = findViewById(R.id.progressBar_listPasien);
         rv_listpasien = findViewById(R.id.rv_lp_listpasien);
         rv_listpasien.setLayoutManager(new LinearLayoutManager(this));
@@ -88,7 +90,7 @@ public class ListPasienActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 pasienModelArrayList.clear();
                 if (!snapshot.exists()) {
-                    Toast.makeText(ListPasienActivity.this, "Data Kosong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListPasienActivity.this, "Data Kosong Semua Pasien", Toast.LENGTH_SHORT).show();
                 } else {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         PasienModel pasienModel = dataSnapshot.getValue(PasienModel.class);
@@ -110,18 +112,21 @@ public class ListPasienActivity extends AppCompatActivity {
     }
 
     private void getOnePasien() {
-//        String idUser = mUser.getUid();
+
+        pasienModelArrayList = new ArrayList<>();
+        String idUser = mUser.getUid();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                pasienModelArrayList.clear();
                 if (!snapshot.exists()) {
-                    Toast.makeText(ListPasienActivity.this, "Data Kosong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListPasienActivity.this, "Data Kosong Salah Satu Pasien", Toast.LENGTH_SHORT).show();
                 } else {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         PasienModel pasienModel = dataSnapshot.getValue(PasienModel.class);
                         assert pasienModel != null;
                         Log.d("DataPasien", pasienModel.getNama());
-                        if (idPasien.equals(pasienModel.getIdPasien())) {
+                        if (pasienModel.getIdUser().toLowerCase().equals(idUser.toLowerCase())) {
                             pasienModelArrayList.add(pasienModel);
                         }
                     }
@@ -139,14 +144,19 @@ public class ListPasienActivity extends AppCompatActivity {
         });
     }
 
-    private void getTypeUser() {
-        reference2.child(idPasien).addValueEventListener(new ValueEventListener() {
+    private void getPasien(){
+        String idUser = mUser.getUid();
+        reference2.child(idUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userModel = snapshot.getValue(UserModel.class);
                 assert userModel != null;
-                typeUser = "user";
-
+                typeUser = userModel.getTypeUser();
+                if (typeUser.equals("admin")){
+                    getAllPasien();
+                }else {
+                    getOnePasien();
+                }
             }
 
             @Override
@@ -154,5 +164,7 @@ public class ListPasienActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 }

@@ -43,6 +43,8 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
     private UserModel userModel;
     private String typeUser;
 
+    private FloatingActionButton btnAdd;
+
 //    private Calendar calendar;
 //    private int tahun, bulanInt, tanggal;
 //    private String bulan;
@@ -66,13 +68,9 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
 //        calendar = Calendar.getInstance();
 
         ImageView iv_btnBack = findViewById(R.id.btnback_detailrekammedis);
-        FloatingActionButton btnAdd = findViewById(R.id.add_drm_tambahrekammedis);
+        btnAdd = findViewById(R.id.add_drm_tambahrekammedis);
         iv_btnBack.setOnClickListener(this);
-        if (typeUser.equals("admin")) {
-            btnAdd.setVisibility(View.VISIBLE);
-        } else {
-            btnAdd.setVisibility(View.GONE);
-        }
+
         btnAdd.setOnClickListener(this);
 
         getAllDetailRekam();
@@ -177,7 +175,13 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userModel = snapshot.getValue(UserModel.class);
-                typeUser = userModel.getUserType();
+                assert userModel != null;
+                typeUser = userModel.getTypeUser();
+                if (typeUser.equals("admin")) {
+                    btnAdd.setVisibility(View.VISIBLE);
+                } else {
+                    btnAdd.setVisibility(View.GONE);
+                }
             }
 
             @Override
