@@ -63,6 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userModel = snapshot.getValue(UserModel.class);
+                assert userModel != null;
                 namaperawat.setText(userModel.getUsername());
                 emailperawat.setText(userModel.getEmail());
                 if (userModel.getImageURL().substring(0, 4).equals("http")) {

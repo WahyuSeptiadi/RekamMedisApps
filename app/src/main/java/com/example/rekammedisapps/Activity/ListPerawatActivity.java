@@ -69,7 +69,10 @@ public class ListPerawatActivity extends AppCompatActivity {
                 userModelArrayList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     UserModel userModel = dataSnapshot.getValue(UserModel.class);
-                    userModelArrayList.add(userModel);
+                    assert userModel != null;
+                    if (userModel.getTypeUser().equals("admin")){
+                        userModelArrayList.add(userModel);
+                    }
                 }
                 listPerawatAdapter = new ListPerawatAdapter(ListPerawatActivity.this, userModelArrayList);
                 rv_listPerawat.setAdapter(listPerawatAdapter);

@@ -177,7 +177,8 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userModel = snapshot.getValue(UserModel.class);
-                typeUser = userModel.getUserType();
+                assert userModel != null;
+                typeUser = userModel.getTypeUser();
             }
 
             @Override

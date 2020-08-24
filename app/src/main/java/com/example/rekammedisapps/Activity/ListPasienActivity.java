@@ -31,9 +31,7 @@ import java.util.ArrayList;
 public class ListPasienActivity extends AppCompatActivity {
 
     //Database
-    private DatabaseReference reference, reference2;
-
-    private String typeUser, idPasien;
+    private DatabaseReference reference;
 
     private ProgressBar pb_listpasien;
     private RecyclerView rv_listpasien;
@@ -51,17 +49,22 @@ public class ListPasienActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_pasien);
-        reference = FirebaseDatabase.getInstance().getReference("Data Umum Pasien");
-        reference2 = FirebaseDatabase.getInstance().getReference("Users");
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
-        idPasien = mUser.getUid();
 
-        getTypeUser();
-        if (typeUser.equals("admin")) {
-            getAllPasien();
-        } else {
-            getOnePasien();
+        reference = FirebaseDatabase.getInstance().getReference("Data Umum Pasien");
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        Intent data = getIntent();
+        String type = data.getStringExtra("typeUser");
+
+        if (type != null){
+            if (type.equals("admin")) {
+                Toast.makeText(this, "Admin", Toast.LENGTH_SHORT).show();
+                getAllPasien();
+            } else {
+                getOnePasien();
+            }
         }
+
         pb_listpasien = findViewById(R.id.progressBar_listPasien);
         rv_listpasien = findViewById(R.id.rv_lp_listpasien);
         rv_listpasien.setLayoutManager(new LinearLayoutManager(this));
@@ -110,7 +113,8 @@ public class ListPasienActivity extends AppCompatActivity {
     }
 
     private void getOnePasien() {
-//        String idUser = mUser.getUid();
+        String idUser = mUser.getUid();
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -121,7 +125,7 @@ public class ListPasienActivity extends AppCompatActivity {
                         PasienModel pasienModel = dataSnapshot.getValue(PasienModel.class);
                         assert pasienModel != null;
                         Log.d("DataPasien", pasienModel.getNama());
-                        if (idPasien.equals(pasienModel.getIdPasien())) {
+                        if (idUser.equals(pasienModel.getIdPasien())) {
                             pasienModelArrayList.add(pasienModel);
                         }
                     }
@@ -139,20 +143,20 @@ public class ListPasienActivity extends AppCompatActivity {
         });
     }
 
-    private void getTypeUser() {
-        reference2.child(idPasien).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userModel = snapshot.getValue(UserModel.class);
-                assert userModel != null;
-                typeUser = "user";
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
+//    private void getTypeUser() {
+//        reference2.child(idPasien).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                userModel = snapshot.getValue(UserModel.class);
+//                assert userModel != null;
+//                typeUser = userModel.getTypeUser();
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 }
