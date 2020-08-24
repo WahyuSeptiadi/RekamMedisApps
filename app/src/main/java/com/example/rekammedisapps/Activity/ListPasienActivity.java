@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rekammedisapps.Adapter.ListPasienAdapter;
 import com.example.rekammedisapps.Model.PasienModel;
+import com.example.rekammedisapps.Model.UserModel;
 import com.example.rekammedisapps.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,9 +31,9 @@ import java.util.ArrayList;
 public class ListPasienActivity extends AppCompatActivity {
 
     //Database
-    private DatabaseReference reference;
+    private DatabaseReference reference, reference2;
 
-    private String typeUser;
+    private String typeUser, idPasien;
 
     private ProgressBar pb_listpasien;
     private RecyclerView rv_listpasien;
@@ -44,17 +45,28 @@ public class ListPasienActivity extends AppCompatActivity {
     //Database
     private FirebaseUser mUser;
 
+    private UserModel userModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_pasien);
-        getDataIntent();
+        reference = FirebaseDatabase.getInstance().getReference("Data Umum Pasien");
+        reference2 = FirebaseDatabase.getInstance().getReference("Users");
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        idPasien = mUser.getUid();
+
+        getTypeUser();
+        if (typeUser.equals("admin")) {
+            getAllPasien();
+        } else {
+            getOnePasien();
+        }
         pb_listpasien = findViewById(R.id.progressBar_listPasien);
         rv_listpasien = findViewById(R.id.rv_lp_listpasien);
         rv_listpasien.setLayoutManager(new LinearLayoutManager(this));
         rv_listpasien.setHasFixedSize(true);
         rv_listpasien.smoothScrollToPosition(0);
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
 
         //Button
         ImageView iv_btnback = findViewById(R.id.iv_lp_btnback);
@@ -64,13 +76,7 @@ public class ListPasienActivity extends AppCompatActivity {
         });
 
         //InisialisasiDatabase
-        reference = FirebaseDatabase.getInstance().getReference("Data Umum Pasien");
 
-        if (typeUser.equals("admin")) {
-            getAllPasien();
-        } else {
-            getOnePasien();
-        }
     }
 
     private void getAllPasien() {
@@ -104,7 +110,7 @@ public class ListPasienActivity extends AppCompatActivity {
     }
 
     private void getOnePasien() {
-        String idUser = mUser.getUid();
+//        String idUser = mUser.getUid();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -113,8 +119,9 @@ public class ListPasienActivity extends AppCompatActivity {
                 } else {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         PasienModel pasienModel = dataSnapshot.getValue(PasienModel.class);
+                        assert pasienModel != null;
                         Log.d("DataPasien", pasienModel.getNama());
-                        if (idUser.equals(pasienModel.getIdPasien())) {
+                        if (idPasien.equals(pasienModel.getIdPasien())) {
                             pasienModelArrayList.add(pasienModel);
                         }
                     }
@@ -132,8 +139,20 @@ public class ListPasienActivity extends AppCompatActivity {
         });
     }
 
-    private void getDataIntent() {
-        Intent getFromHome = getIntent();
-        typeUser = getFromHome.getStringExtra("typeUser");
+    private void getTypeUser() {
+        reference2.child(idPasien).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userModel = snapshot.getValue(UserModel.class);
+                assert userModel != null;
+                typeUser = "user";
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

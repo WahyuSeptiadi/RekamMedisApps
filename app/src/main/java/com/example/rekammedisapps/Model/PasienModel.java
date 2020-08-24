@@ -16,6 +16,7 @@ public class PasienModel {
     private String ImageURL;
     private String keluhan;
     private String riwayat;
+    private String idUser;
 
     public PasienModel(){
 
@@ -75,5 +76,13 @@ public class PasienModel {
 
     public void setRiwayat(String riwayat) {
         this.riwayat = riwayat;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 }

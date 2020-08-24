@@ -11,7 +11,7 @@ public class UserModel {
     private String username;
     private String email;
     private String imageURL;
-    private String userType;
+    private String typeUser;
 
     public UserModel() {
     }
@@ -64,11 +64,11 @@ public class UserModel {
         this.search = search;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getTypeUser() {
+        return typeUser;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setTypeUser(String typeUser) {
+        this.typeUser = typeUser;
     }
 }

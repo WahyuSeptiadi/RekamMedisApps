@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -48,12 +50,14 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
     //Database
     private DatabaseReference reference;
     private StorageReference storageReference;
+    private FirebaseUser mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_pasien);
 
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
 //        progressBar = findViewById(R.id.pb_dp_progressBar);
         et_namapasien =  findViewById(R.id.et_dp_namapasien);
         et_alamatpasien = findViewById(R.id.et_dp_alamat);
@@ -107,6 +111,7 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
         }
     }
     private void saveDataPatient(String nama, String alamat, String umur, String keluhan, String riwayat){
+        String idUser = mUser.getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String keyPasien = database.getReference("Data Umum Pasien").push().getKey();
         final ProgressDialog pd = new ProgressDialog(this);
@@ -121,6 +126,7 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
         saveDataPatient.put("umur", umur);
         saveDataPatient.put("keluhan", keluhan);
         saveDataPatient.put("riwayat", riwayat);
+        saveDataPatient.put("idUser", idUser);
         saveDataPatient.put("imageURL", "default");
 
         reference.child(keyPasien).setValue(saveDataPatient).addOnCompleteListener(new OnCompleteListener<Void>() {
