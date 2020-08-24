@@ -2,10 +2,12 @@ package com.example.rekammedisapps.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,7 +57,7 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
     //intent from detail rekam medis
     private String getTime, getTanggal, getBulan, getTahun;
     private String getNamaPasien, getUmurPasien, getNamaPerawat, getAlamat, getKeluhan, getImagePerawat, getRiwayat, getDiagnosa, getRencana, getPengobatan;
-    private String getIdPasien, getIdPerawat, getIdRekam, getRujukanpoli;
+    private String getIdPasien, getIdPerawat, getIdRekam, getRujukanpoli, getNomerRekam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,7 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
         spinnerPoli = findViewById(R.id.spinner_poli);
         spinnerPoli.setOnItemSelectedListener(this);
         TextView titlebar = findViewById(R.id.titlebar_profile);
+        ImageView btnBack = findViewById(R.id.btnback_form);
 
         if (getIdPasien != null) {
             et_namaPasien.setText(getNamaPasien);
@@ -101,6 +104,11 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
             et_keluhan.setText(keluhanPasien);
             et_riwayatpenyakit.setText(riwayatPasien);
         }
+
+        btnBack.setOnClickListener(view -> {
+            startActivity(new Intent(FormRekamMedisActivity.this, HomeActivity.class));
+            finish();
+        });
 
         btnAddRekamMedis.setOnClickListener(view -> {
             if (getIdPasien != null && getIdRekam != null) {
@@ -136,6 +144,7 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
         getDiagnosa = getData.getStringExtra("diagnosa");
         getRencana = getData.getStringExtra("rencana");
         getPengobatan = getData.getStringExtra("pengobatan");
+        getNomerRekam = getData.getStringExtra("nomerRekam");
 
     }
 
@@ -212,6 +221,9 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
         String rencana = et_rencanaPenata.getText().toString();
         String pengobatan = et_pengobatan.getText().toString();
 
+        //GENERATE NOMER REKAM MEDIS
+        String nomerRekam = String.valueOf(System.currentTimeMillis());
+
         HashMap<String, Object> dataRekamMedis = new HashMap<>();
         dataRekamMedis.put("namaPerawat", userModel.getUsername());
         dataRekamMedis.put("imageURLPerawat", userModel.getImageURL());
@@ -231,6 +243,7 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
         dataRekamMedis.put("idRekamMedis", key);
         dataRekamMedis.put("timePelayanan", getCurrentLocalTimeStamp(0));
         dataRekamMedis.put("rujukanPoli", getRujukanpoli);
+        dataRekamMedis.put("nomerRekam", nomerRekam);
 
         assert key != null;
         reference.child(idPasien).child(key).setValue(dataRekamMedis);
@@ -267,6 +280,7 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
         dataRekamMedis.put("bulanPelayanan", bulan); //get current time aja
         dataRekamMedis.put("tahunPelayanan", String.valueOf(tahun)); //get current time aja
         dataRekamMedis.put("rujukanPoli", getRujukanpoli);
+        dataRekamMedis.put("nomerRekam", getNomerRekam);
 
         reference.child(getIdPasien).child(getIdRekam).setValue(dataRekamMedis);
     }

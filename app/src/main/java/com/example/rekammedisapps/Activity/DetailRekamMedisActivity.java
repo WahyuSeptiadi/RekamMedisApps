@@ -16,14 +16,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class DetailRekamMedisActivity extends AppCompatActivity {
 
     private TextView tvNamaPasien, tvUmurPasien, tvNamaPerawat, tvAlamatPasien, tvKeluhanPasien, tvRiwayat, tvDiagnosa, tvRencana, tvPengobatan;
-    private TextView tvTime, tvTanggal, tvBulan, tvTahun, tvRujukanpoli;
+    private TextView tvTime, tvTanggal, tvBulan, tvTahun, tvRujukanpoli, tvNomerRekam;
     private CircleImageView civProfilePasien;
     private ImageView iv_btnBack;
     private ImageView iv_EditRekamMedis;
 
     private String getTime, getTanggal, getBulan, getTahun;
     private String getNamaPasien, getUmurPasien, getNamaPerawat, getAlamat, getKeluhan, getImagePerawat, getRiwayat, getDiagnosa, getRencana, getPengobatan;
-    private String getIdPasien, getIdPerawat, getIdRekam, getRujukanpoli;
+    private String getIdPasien, getIdPerawat, getIdRekam, getRujukanpoli, getNomerRekam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class DetailRekamMedisActivity extends AppCompatActivity {
         iv_btnBack = findViewById(R.id.btnback_hasil_rekam_medis);
         iv_EditRekamMedis = findViewById(R.id.iv_edit_rekammedis);
         tvRujukanpoli = findViewById(R.id.tv_rujukanpoli_detail_rekam_medis);
+        tvNomerRekam = findViewById(R.id.tv_nomerrekam_detail_rekam_medis);
 
         iv_btnBack.setOnClickListener(view -> {
             startActivity(new Intent(DetailRekamMedisActivity.this, HomeActivity.class));
@@ -73,6 +74,7 @@ public class DetailRekamMedisActivity extends AppCompatActivity {
             toUpdate.putExtra("idperawat", getIdPerawat);
             toUpdate.putExtra("idrekam", getIdRekam);
             toUpdate.putExtra("rujukanPoli", getRujukanpoli);
+            toUpdate.putExtra("nomerRekam", getNomerRekam);
 
             startActivity(toUpdate);
             finish();
@@ -96,6 +98,7 @@ public class DetailRekamMedisActivity extends AppCompatActivity {
             tvRencana.setText(getRencana);
             tvPengobatan.setText(getPengobatan);
             tvRujukanpoli.setText(getRujukanpoli);
+            tvNomerRekam.setText(getNomerRekam);
 
             if (getImagePerawat.substring(0, 4).equals("http")) {
                 Picasso.get().load(getImagePerawat).into(civProfilePasien);
@@ -125,5 +128,6 @@ public class DetailRekamMedisActivity extends AppCompatActivity {
         getIdPerawat = getData.getStringExtra("idperawat");
         getIdRekam = getData.getStringExtra("idrekam");
         getRujukanpoli = getData.getStringExtra("rujukanPoli");
+        getNomerRekam = getData.getStringExtra("nomerRekam");
     }
 }
