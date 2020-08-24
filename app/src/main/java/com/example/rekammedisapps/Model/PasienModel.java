@@ -14,6 +14,8 @@ public class PasienModel {
     private String alamat;
     @PropertyName("imageURL")
     private String ImageURL;
+    private String keluhan;
+    private String riwayat;
 
     public PasienModel(){
 
@@ -57,5 +59,21 @@ public class PasienModel {
 
     public void setIdPasien(String idPasien) {
         this.idPasien = idPasien;
+    }
+
+    public String getKeluhan() {
+        return keluhan;
+    }
+
+    public void setKeluhan(String keluhan) {
+        this.keluhan = keluhan;
+    }
+
+    public String getRiwayat() {
+        return riwayat;
+    }
+
+    public void setRiwayat(String riwayat) {
+        this.riwayat = riwayat;
     }
 }

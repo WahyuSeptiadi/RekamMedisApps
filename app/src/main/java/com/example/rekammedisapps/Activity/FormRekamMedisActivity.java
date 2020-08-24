@@ -45,7 +45,7 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
     private EditText et_namaPasien, et_umurPasien, et_alamatPasien, et_keluhan, et_riwayatpenyakit,
             et_diagnosa, et_rencanaPenata, et_pengobatan;
     //Intent
-    private String idPasien, namaPasien, umurPasien, alamatPasien;
+    private String idPasien, namaPasien, umurPasien, alamatPasien, keluhanPasien, riwayatPasien;
     //GetMonthCalendar
     private Calendar calendar;
     private int tahun, bulanInt, tanggal;
@@ -98,6 +98,8 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
             et_namaPasien.setText(namaPasien);
             et_umurPasien.setText(umurPasien);
             et_alamatPasien.setText(alamatPasien);
+            et_keluhan.setText(keluhanPasien);
+            et_riwayatpenyakit.setText(riwayatPasien);
         }
 
         btnAddRekamMedis.setOnClickListener(view -> {
@@ -144,6 +146,8 @@ public class FormRekamMedisActivity extends AppCompatActivity implements Adapter
         namaPasien = getValue.getStringExtra("namaPasien");
         umurPasien = getValue.getStringExtra("umurPasien");
         alamatPasien = getValue.getStringExtra("alamatPasien");
+        keluhanPasien = getValue.getStringExtra("keluhanPasien");
+        riwayatPasien = getValue.getStringExtra("riwayatPasien");
 
     }
 

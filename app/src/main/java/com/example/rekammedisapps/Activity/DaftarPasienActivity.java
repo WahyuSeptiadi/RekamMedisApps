@@ -34,7 +34,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DaftarPasienActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText et_namapasien, et_alamatpasien, et_umurpasien;
+    private EditText et_namapasien, et_alamatpasien, et_umurpasien, et_keluhan, et_riwayatpenyakit;
     private CardView cv_btnregisterdp;
     private Uri mImageUri;
     private ImageView iv_uploadimage, iv_deleteimage, iv_btnBack;
@@ -58,6 +58,8 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
         et_namapasien =  findViewById(R.id.et_dp_namapasien);
         et_alamatpasien = findViewById(R.id.et_dp_alamat);
         et_umurpasien = findViewById(R.id.et_dp_umur);
+        et_keluhan = findViewById(R.id.et_dp_keluhan);
+        et_riwayatpenyakit = findViewById(R.id.et_dp_riwayatpenyakit);
         iv_uploadimage = findViewById(R.id.iv_dp_imageuploadprofilepasien);
         iv_uploadimage.setOnClickListener(this);
         iv_deleteimage = findViewById(R.id.iv_dp_imageDeleteProfilepasien);
@@ -81,7 +83,9 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
                 String namapasien = et_namapasien.getText().toString();
                 String alamatpasien = et_alamatpasien.getText().toString();
                 String umurpasien = et_umurpasien.getText().toString();
-                saveDataPatient(namapasien, alamatpasien, umurpasien);
+                String keluhanPasien = et_keluhan.getText().toString();
+                String riwayatPasien = et_riwayatpenyakit.getText().toString();
+                saveDataPatient(namapasien, alamatpasien, umurpasien, keluhanPasien, riwayatPasien);
                 break;
             case R.id.iv_dp_imageuploadprofilepasien:
                 iv_uploadimage.setVisibility(View.GONE);
@@ -102,7 +106,7 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
                 break;
         }
     }
-    private void saveDataPatient(String nama, String alamat, String umur){
+    private void saveDataPatient(String nama, String alamat, String umur, String keluhan, String riwayat){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String keyPasien = database.getReference("Data Umum Pasien").push().getKey();
         final ProgressDialog pd = new ProgressDialog(this);
@@ -115,6 +119,8 @@ public class DaftarPasienActivity extends AppCompatActivity implements View.OnCl
         saveDataPatient.put("nama", nama);
         saveDataPatient.put("alamat", alamat);
         saveDataPatient.put("umur", umur);
+        saveDataPatient.put("keluhan", keluhan);
+        saveDataPatient.put("riwayat", riwayat);
         saveDataPatient.put("imageURL", "default");
 
         reference.child(keyPasien).setValue(saveDataPatient).addOnCompleteListener(new OnCompleteListener<Void>() {

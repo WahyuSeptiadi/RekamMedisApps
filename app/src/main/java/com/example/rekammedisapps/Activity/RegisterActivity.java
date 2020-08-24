@@ -91,7 +91,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 String username = etUsername.getText().toString();
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
-
                 if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
                     if (password.length() < 6) {
                         Toast.makeText(this, "Password harus lebih dari 6 digit", Toast.LENGTH_SHORT).show();
@@ -141,16 +140,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 FirebaseUser firebaseUser = auth.getCurrentUser();
                                 assert firebaseUser != null;
                                 String userid = firebaseUser.getUid();
+                                HashMap<String, String> hashMap = new HashMap<>();
 
                                 reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
-
-                                HashMap<String, String> hashMap = new HashMap<>();
+                                int totChar = username.length();
+                                if (username.substring(0,4).toLowerCase().equals("6452")){
+                                    hashMap.put("typeUser", "admin");
+                                    hashMap.put("username", username.substring(4, totChar));
+                                }else{
+                                    hashMap.put("typeUser", "user");
+                                    hashMap.put("username", username);
+                                }
                                 hashMap.put("email", email);
                                 hashMap.put("id", userid);
-                                hashMap.put("username", username);
                                 hashMap.put("search", username.toLowerCase());
                                 hashMap.put("imageURL", "default");
-//                                hashMap.put("type", "user");
 
                                 reference.setValue(hashMap).addOnCompleteListener(task1 -> {
                                     if (mImageUri != null) {

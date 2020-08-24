@@ -14,8 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rekammedisapps.Adapter.ListRekamMedisAdapter;
 import com.example.rekammedisapps.Model.RekamMedisModel;
+import com.example.rekammedisapps.Model.UserModel;
 import com.example.rekammedisapps.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,9 +35,13 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
     private ListRekamMedisAdapter listRekamMedisAdapter;
 
     //GetValueIntent
-    private String idPasien, namaPasien, umurPasien, alamatPasien;
+    private String idPasien, namaPasien, umurPasien, alamatPasien, keluhanPasien, riwayatPasien;
     //Database
     private DatabaseReference reference;
+    private FirebaseUser mUser;
+
+    private UserModel userModel;
+    private String typeUser;
 
 //    private Calendar calendar;
 //    private int tahun, bulanInt, tanggal;
@@ -45,7 +52,9 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_rekam_medis);
 
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
         getValueIntent();
+        getTypeUser();
 
         progressBar = findViewById(R.id.progressBar_listRekamMedis);
         recyclerView = findViewById(R.id.rv_list_detailrekammedis);
@@ -59,6 +68,11 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
         ImageView iv_btnBack = findViewById(R.id.btnback_detailrekammedis);
         FloatingActionButton btnAdd = findViewById(R.id.add_drm_tambahrekammedis);
         iv_btnBack.setOnClickListener(this);
+        if (typeUser.equals("admin")) {
+            btnAdd.setVisibility(View.VISIBLE);
+        } else {
+            btnAdd.setVisibility(View.GONE);
+        }
         btnAdd.setOnClickListener(this);
 
         getAllDetailRekam();
@@ -134,6 +148,8 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
                 toForm.putExtra("namaPasien", namaPasien);
                 toForm.putExtra("umurPasien", umurPasien);
                 toForm.putExtra("alamatPasien", alamatPasien);
+                toForm.putExtra("keluhanPasien", keluhanPasien);
+                toForm.putExtra("riwayatPasien", riwayatPasien);
 
                 startActivity(toForm);
                 finish();
@@ -150,5 +166,24 @@ public class ListRekamMedisActivity extends AppCompatActivity implements View.On
         namaPasien = getValueFromList.getStringExtra("namaPasien");
         umurPasien = getValueFromList.getStringExtra("umurPasien");
         alamatPasien = getValueFromList.getStringExtra("alamatPasien");
+        keluhanPasien = getValueFromList.getStringExtra("keluhanPasien");
+        riwayatPasien = getValueFromList.getStringExtra("riwayatPasien");
+    }
+
+    private void getTypeUser() {
+        String idPasien = mUser.getUid();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(idPasien).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userModel = snapshot.getValue(UserModel.class);
+                typeUser = userModel.getUserType();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

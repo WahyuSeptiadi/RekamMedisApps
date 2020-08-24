@@ -66,6 +66,8 @@ public class ListPasienAdapter extends RecyclerView.Adapter<ListPasienAdapter.Vi
             toListMonth.putExtra("namaPasien", pasienModel.getNama());
             toListMonth.putExtra("umurPasien", pasienModel.getUmur());
             toListMonth.putExtra("alamatPasien", pasienModel.getAlamat());
+            toListMonth.putExtra("keluhanPasien", pasienModel.getKeluhan());
+            toListMonth.putExtra("riwayatPasien", pasienModel.getRiwayat());
             mActivity.startActivity(toListMonth);
         });
 

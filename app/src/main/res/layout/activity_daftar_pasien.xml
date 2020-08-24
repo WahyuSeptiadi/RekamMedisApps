@@ -177,13 +177,61 @@
                             android:paddingRight="10dp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_keluhan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_password"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        >
 
+                        <EditText
+                            android:textSize="14sp"
+                            android:id="@+id/et_dp_keluhan"
+                            android:layout_width="250dp"
+                            android:layout_height="40dp"
+                            android:autofillHints=""
+                            android:background="@drawable/bg_round_white"
+                            android:hint="Keluhan Pasien"
+                            android:inputType="number"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="10dp"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="10dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_riwayatpenyakit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_keluhan"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        >
+
+                        <EditText
+                            android:textSize="14sp"
+                            android:id="@+id/et_dp_riwayatpenyakit"
+                            android:layout_width="250dp"
+                            android:layout_height="40dp"
+                            android:autofillHints=""
+                            android:background="@drawable/bg_round_white"
+                            android:hint="Keluhan Pasien"
+                            android:inputType="number"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="10dp"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="10dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cv_dp_btnregister"
                         android:layout_width="100dp"
                         android:layout_height="35dp"
-                        android:layout_below="@id/input_password"
+                        android:layout_below="@id/input_riwayatpenyakit"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="30dp"

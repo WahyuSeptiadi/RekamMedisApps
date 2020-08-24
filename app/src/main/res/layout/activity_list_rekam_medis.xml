@@ -54,6 +54,7 @@
         android:src="@drawable/ic_add"
         app:borderWidth="0dp"
         android:elevation="6dp"
+        android:visibility="gone"
         android:backgroundTint="@color/colorPrimary"
         android:layout_marginTop="300dp"
         app:fabSize="normal"/>
